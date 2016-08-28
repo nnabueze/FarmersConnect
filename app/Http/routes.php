@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin/dashboard','DashboardController@index');//Display dashboard
+/*Route::get('user','DashboardController@user');*///Display dashboard
+Route::get('admin/logout','DashboardController@logout');//Logout from the systems
+
+
+
+Route::resource('/admin','AdminController'); //Display Login page
+Route::resource('permission','PermissionController');
+Route::resource('role','RoleController');
+Route::resource('/users','UserController');
+
