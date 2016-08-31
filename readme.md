@@ -8,6 +8,8 @@
 
 ###Packages Installed by Eze######
 bican/roles": "2.1.* for access control
+SimpleSoftwareIO/simple-qrcode for qrcodes   https://www.simplesoftware.io/docs/simple-qrcode
+fzaninotto/faker": "^1.6"
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 

@@ -315,6 +315,14 @@
     <script src="{{ asset ('/AdminTemplate/plugins/flot-charts/jquery.flot.time.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/plugins/waitme/waitMe.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
+    <!-- Jquery Validation Plugin Css -->
+    <script src="{{ asset ('/AdminTemplate/plugins/jquery-validation/jquery.validate.js') }}"></script>
+    
+
+    <!-- JQuery Steps Plugin Js -->
+    
+    <script src="{{ asset ('/AdminTemplate/js/admin.js') }}"></script>
+    <script src="{{ asset ('/AdminTemplate/js/pages/forms/form-wizard.js') }}"></script>
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
