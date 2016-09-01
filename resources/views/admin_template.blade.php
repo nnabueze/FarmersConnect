@@ -326,6 +326,8 @@
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+    
+
 
     <!-- Custom Js -->
     <script src="{{ asset ('/AdminTemplate/js/admin.js') }}"></script>
@@ -349,3 +351,5 @@
 </body>
 
 </html>
+
+

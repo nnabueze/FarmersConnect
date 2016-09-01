@@ -73,10 +73,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/farmers">Register Farmers</a>
+                                <a href="/farmers/create">Register Farmers</a>
                             </li>
                             <li>
-                                <a href="#">View Farmers</a>
+                                <a href="/farmers">View Farmers</a>
                             </li>
                             <li>
                                 <a href="#">Upload Farmers</a>

@@ -58,11 +58,11 @@
 								</div>
 								<div class='col-xs-6 col-md-4'>
 										<a href="javascript:void(0);" class="thumbnail">
-										    <img src="http://placehold.it/500x300" class="img-responsive">
+										    {!! QrCode::size(100)->generate($farmer->key); !!}
 										</a>
 								</div>
 							</div>
-							<button type="button" class="btn btn-default waves-effect"><i class="material-icons">fingerprint</i>&nbsp;Print</button>
+							<button type="button" class="btn btn-default waves-effect" onclick="myFunction()"><i class="material-icons">print</i>&nbsp;Print</button>
 					</div>
 				</div>
 			</div><!-- End of First Colum -->

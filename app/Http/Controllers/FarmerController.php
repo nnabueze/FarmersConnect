@@ -32,6 +32,8 @@ class FarmerController extends Controller
     public function create()
     {
         //
+        $title = "Farmers Connect: Farmers Page";
+        return view('farmer.create',compact('title'));
     }
 
     /**
