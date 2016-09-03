@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
 use App\Farmer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -31,6 +30,9 @@ class DatatablesController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Farmer::query())->make(true);
+        return Datatables::of(Farmer::query())->addColumn('action', function ($id) {
+            return '<a href="farmers/' . $id->id . '/edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+        })->make(true);
     }
 }

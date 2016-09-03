@@ -38,7 +38,7 @@
 		                        	<th>Email</th>
 		                        	<th>Phone</th>
 		                        	<th>State</th>
-		                        	<th>Lga</th>
+		                        	<th>Action</th>
 		                        </tr>
 		                    </thead>
 		                </table>
@@ -63,7 +63,7 @@ $(function() {
             { data: 'email', name: 'email' },
             { data: 'phone', name: 'phone' },
             { data: 'state', name: 'state' },
-            { data: 'lga', name: 'lga' },
+            {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
 });
