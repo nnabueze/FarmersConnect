@@ -34,11 +34,11 @@
 		                <table class="table table-bordered table-striped table-hover" id="users-table">
 		                    <thead>
 		                        <tr>
-		                        	<th>Id</th>
-		                        	<th>Name</th>
+		                        	<th>Full Name</th>
 		                        	<th>Email</th>
-		                        	<th>Created At</th>
-		                        	<th>Updated At</th>
+		                        	<th>Phone</th>
+		                        	<th>State</th>
+		                        	<th>Lga</th>
 		                        </tr>
 		                    </thead>
 		                </table>
@@ -59,11 +59,11 @@ $(function() {
         serverSide: true,
         ajax: '{!! route('datatables.data') !!}',
         columns: [
-            { data: 'id', name: 'id' },
-            { data: 'name', name: 'name' },
+            { data: 'fullname', name: 'fullname' },
             { data: 'email', name: 'email' },
-            { data: 'created_at', name: 'created_at' },
-            { data: 'updated_at', name: 'updated_at' }
+            { data: 'phone', name: 'phone' },
+            { data: 'state', name: 'state' },
+            { data: 'lga', name: 'lga' },
         ]
     });
 });

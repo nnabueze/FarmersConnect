@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Farmer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
@@ -30,6 +31,6 @@ class DatatablesController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(User::query())->make(true);
+        return Datatables::of(Farmer::query())->make(true);
     }
 }
