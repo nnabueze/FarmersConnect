@@ -28,7 +28,7 @@ class AdminController extends Controller
     {
         //
         if (Auth::check()) {
-            return Redirect::back();
+            return Redirect::to('admin/dashboard');
         }else{
             $title = "Farmers Connect: Admin Page";
             return view('admin.index', compact('title'));

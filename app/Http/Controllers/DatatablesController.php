@@ -41,4 +41,6 @@ class DatatablesController extends Controller
             <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
         })->make(true);
     }
+
+
 }

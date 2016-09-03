@@ -15,7 +15,7 @@
 		        <div class="card">
 		            <div class="header">
 		                <h2>
-		                    LISTING FARMERS
+		                    ASSIGNING FARMERS
 		                </h2>
 		                <ul class="header-dropdown m-r--5">
 		                    <li class="dropdown">
@@ -31,14 +31,15 @@
 		                </ul>
 		            </div>
 		            <div class="body">
-		                <table class="table table-bordered table-striped table-hover" id="users-table">
+		                <table class="table table-bordered table-striped table-hover" id="users-table1">
 		                    <thead>
 		                        <tr>
+		                        	<th>Checkbox</th>
 		                        	<th>Full Name</th>
 		                        	<th>Email</th>
 		                        	<th>Phone</th>
 		                        	<th>State</th>
-		                        	<th>Action</th>
+		                        	
 		                        </tr>
 		                    </thead>
 		                </table>
@@ -54,16 +55,17 @@
 @push('scripts')
 <script>
 $(function() {
-    $('#users-table').DataTable({
+    $('#users-table1').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('datatables.data') !!}',
+        ajax: '{!! route('datatables.assigned') !!}',
         columns: [
+        	{data: 'action', name: 'action', orderable: false, searchable: false}
             { data: 'fullname', name: 'fullname' },
             { data: 'email', name: 'email' },
             { data: 'phone', name: 'phone' },
             { data: 'state', name: 'state' },
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            
         ]
     });
 });
