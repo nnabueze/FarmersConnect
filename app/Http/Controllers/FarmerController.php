@@ -12,6 +12,13 @@ use App\Http\Controllers\Controller;
 
 class FarmerController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -72,6 +79,10 @@ class FarmerController extends Controller
     public function show($id)
     {
         //
+        $title = 'Farmers Connect: Farmer Details';
+        $farmer = Farmer::where('id',$id)->first();
+        //dd($farmer);
+        return view('farmer.show',compact('title','farmer'));
     }
 
     /**
@@ -83,6 +94,8 @@ class FarmerController extends Controller
     public function edit($id)
     {
         //
+        echo "edit method";
+        die;
     }
 
     /**
@@ -95,6 +108,8 @@ class FarmerController extends Controller
     public function update(Request $request, $id)
     {
         //
+        echo "update method";
+        die;
     }
 
     /**
@@ -106,5 +121,7 @@ class FarmerController extends Controller
     public function destroy($id)
     {
         //
+        echo "delete method";
+        die;
     }
 }

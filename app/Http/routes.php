@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Route for listing farmers
 Route::controller('datatables', 'DatatablesController', [
     'anyData'  => 'datatables.data',
     'getIndex' => 'datatables',

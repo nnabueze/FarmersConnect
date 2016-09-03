@@ -13,6 +13,12 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+
+        //$this->middleware('guest');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +27,12 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $title = "Farmers Connect: Admin Page";
-        return view('admin.index', compact('title'));
+        if (Auth::check()) {
+            return Redirect::back();
+        }else{
+            $title = "Farmers Connect: Admin Page";
+            return view('admin.index', compact('title'));
+        }
     }
 
     /**
