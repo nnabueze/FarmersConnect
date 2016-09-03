@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
+    <!-- Datatable-->
+    <link href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
+
     <!-- Bootstrap Core Css -->
     <link href="{{ asset ('/AdminTemplate/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
@@ -281,7 +284,9 @@
 
 
 
-
+    <!-- Datatable -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <!-- Jquery Core Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery/jquery.min.js') }}"></script>
 
