@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller('datatables', 'DatatablesController', [
+    'anyData'  => 'datatables.data',
+    'getIndex' => 'datatables',
+]);
+
 Route::get('admin/dashboard','DashboardController@index');//Display dashboard
 /*Route::get('user','DashboardController@user');*///Display dashboard
 Route::get('admin/logout','DashboardController@logout');//Logout from the systems
