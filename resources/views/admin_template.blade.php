@@ -29,7 +29,10 @@
 
     <!-- Preloader Css -->
     <link href="{{ asset ('/AdminTemplate/plugins/material-design-preloader/md-preloader.css') }}" rel="stylesheet" />
-
+    
+    <!-- Dropzone Css -->
+    <link href="{{ asset ('/AdminTemplate/plugins/dropzone/dropzone.css') }}" rel="stylesheet">
+    
     <!-- Morris Chart Css-->
     <link href="{{ asset ('/AdminTemplate/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
 
@@ -325,8 +328,7 @@
 
     <!-- JQuery Steps Plugin Js -->
     
-    <script src="{{ asset ('/AdminTemplate/js/admin.js') }}"></script>
-    <script src="{{ asset ('/AdminTemplate/js/pages/forms/form-wizard.js') }}"></script>
+
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
@@ -339,6 +341,8 @@
     <script src="{{ asset ('/AdminTemplate/js/pages/cards/basic.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/js/pages/index.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/js/pages/forms/basic-form-elements.js') }}"></script>
+    <!-- Dropzone Plugin Js -->
+    <script src="{{ asset ('/AdminTemplate/plugins/dropzone/dropzone.js') }}"></script>
 
     <!-- Demo Js -->
     <script src="{{ asset ('/AdminTemplate/js/demo.js') }}"></script>

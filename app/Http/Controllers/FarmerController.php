@@ -51,6 +51,9 @@ class FarmerController extends Controller
      */
     public function store(Request $request)
     {
+           echo "uploading image";
+        die;
+        
         $title ="Farmers Connect: profile page";
         //check if email exist
         $check = Farmer::where('email',$request->input('email'))->first();
