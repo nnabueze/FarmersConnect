@@ -37,6 +37,14 @@ class DashboardController extends Controller
     	return Redirect::back();
     }
 
+    //assigning farmer to scheme
+    public function assign(Request $request)
+    {
+        echo "<pre>";
+        print_r($request->all());
+        die;
+    }
+
     //logout from the system
     public function logout()
     {

@@ -82,7 +82,7 @@
                                 <a href="#">Upload Farmers</a>
                             </li>
                             <li>
-                                <a href="#">Assign Farmers</a>
+                                <a href="/assign">Assign Farmers</a>
                             </li>
                         </ul>
                     </li>

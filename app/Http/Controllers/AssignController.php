@@ -9,8 +9,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 
-class DatatablesController extends Controller
+class AssignController extends Controller
 {
+    //
     public function __construct()
     {
 
@@ -26,7 +27,7 @@ class DatatablesController extends Controller
     public function getIndex()
     {
     	$title = "Farmers Connect: Farmers Page";
-        return view('farmer.index',compact('title'));
+        return view('farmer.assign',compact('title'));
     }
 
     /**
@@ -37,8 +38,8 @@ class DatatablesController extends Controller
     public function anyData()
     {
         return Datatables::of(Farmer::query())->addColumn('action', function ($id) {
-            return '<a href="farmers/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-            <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+            return '<input type="checkbox" name="box[]" value="'.$id->id.'" id="remember_me_'.$id->id.'">
+                                        <label for="remember_me_'.$id->id.'"></label>'; 
         })->make(true);
     }
 }

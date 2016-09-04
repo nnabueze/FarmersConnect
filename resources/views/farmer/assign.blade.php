@@ -31,10 +31,14 @@
 		                </ul>
 		            </div>
 		            <div class="body">
+		            	<form action='assign' method='POST'>
+		            		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                <table class="table table-bordered table-striped table-hover" id="users-table1">
 		                    <thead>
 		                        <tr>
-		                        	<th>Checkbox</th>
+		                        	<th><input type="checkbox" id="remember_me_3">
+                                        <label for="remember_me_3"></label>
+		                        	</th>
 		                        	<th>Full Name</th>
 		                        	<th>Email</th>
 		                        	<th>Phone</th>
@@ -43,6 +47,16 @@
 		                        </tr>
 		                    </thead>
 		                </table>
+		                <br />
+		                <div class="form-group">
+		                	<select name='role' class="form-control show-tick">
+		                		<option value=''>Select Scheme</option>
+		                	    <option value=''></option>
+		                	</select>
+		                </div>
+		                <button type="submit" class="btn btn-warning pull-right waves-effect">ASSIGN SCHEME</button>
+		                <br />
+		            	</form>
 		            </div>
 		        </div>
 		    </div>
@@ -55,19 +69,28 @@
 @push('scripts')
 <script>
 $(function() {
-    $('#users-table1').DataTable({
+   var table = $('#users-table1').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('datatables.assigned') !!}',
+        ajax: '{!! route('assign.data') !!}',
         columns: [
-        	{data: 'action', name: 'action', orderable: false, searchable: false}
+        	{data: 'action', name: 'action', orderable: false, searchable: false},
             { data: 'fullname', name: 'fullname' },
             { data: 'email', name: 'email' },
             { data: 'phone', name: 'phone' },
             { data: 'state', name: 'state' },
+
             
         ]
     });
+
+   // Handle click on "Select all" control
+   $('#remember_me_3').on('click', function(){
+      // Get all rows with search applied
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      // Check/uncheck checkboxes for all rows in the table
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
 });
 </script>
 @endpush

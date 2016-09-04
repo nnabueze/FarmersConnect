@@ -338,6 +338,7 @@
     <script src="{{ asset ('/AdminTemplate/js/bootbox.min.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/js/pages/cards/basic.js') }}"></script>
     <script src="{{ asset ('/AdminTemplate/js/pages/index.js') }}"></script>
+    <script src="{{ asset ('/AdminTemplate/js/pages/forms/basic-form-elements.js') }}"></script>
 
     <!-- Demo Js -->
     <script src="{{ asset ('/AdminTemplate/js/demo.js') }}"></script>

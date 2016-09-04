@@ -22,6 +22,11 @@ Route::controller('datatables', 'DatatablesController', [
     'getIndex' => 'datatables',
 ]);
 //Route assigning farmer
+Route::controller('assign', 'AssignController', [
+    'anyData'  => 'assign.data',
+    'getIndex' => 'assign',
+]);
+Route::post('assign','DashboardController@assign');
 
 
 Route::get('admin/dashboard','DashboardController@index');//Display dashboard
