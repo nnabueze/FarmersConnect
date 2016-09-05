@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Session;
+use Input;
 use Redirect;
 use App\Farmer;
 use App\Http\Requests;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 
 class FarmerController extends Controller
@@ -51,6 +53,13 @@ class FarmerController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+            
+        if ($request->hasFile('file')) {
+            //
+            echo "good job";
+        die;
+        }
            echo "uploading image";
         die;
         
@@ -126,5 +135,23 @@ class FarmerController extends Controller
         //
         echo "delete method";
         die;
+    }
+
+    //uploading image
+    public function image($request)
+    {
+        if($request->file('file')){
+         echo "good job";
+         die;
+           $image = Input::file('image');
+           $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+           $path = public_path('profilepics/' . $filename);
+
+       
+               Image::make($image->getRealPath())->resize(200, 200)->save($path);
+               $user->image = $filename;
+               $user->save();
+        }
     }
 }
