@@ -34,6 +34,9 @@ Route::get('admin/dashboard','DashboardController@index');//Display dashboard
 Route::get('admin/logout','DashboardController@logout');//Logout from the systems
 Route::get('csv','CsvController@csv');
 Route::post('csv','CsvController@upload');
+Route::get('crops','CsvController@crop');
+Route::post('crops','CsvController@addCrop');
+Route::delete('crops/{any}','CsvController@deleteCrop');
 
 
 ////////////////////////ACL///////////////////////////

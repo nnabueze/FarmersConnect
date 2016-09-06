@@ -23,4 +23,8 @@ class Farmer extends Model
     'account_no',
     'image'
     ];
+
+    public function crops(){
+        return $this->belongsToMany('App\Crop');
+    }
 }

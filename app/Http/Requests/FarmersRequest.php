@@ -27,14 +27,14 @@ class FarmersRequest extends Request
             //
         'fullname'=>'required|min:3',
         'email'=>'required|email',
-        'phone'=>'required|number',
+        'phone'=>'required|numeric',
         'gender'=>'required',
         'state'=>'required',
         'lga'=>'required',
         'village'=>'required',
-        'farm_size'=>'required|number',
+        'farm_size'=>'required|numeric',
         'bank'=>'required',
-        'account_no'=>'required|number'
+        'account_no'=>'required|numeric'
         ];
     }
 }

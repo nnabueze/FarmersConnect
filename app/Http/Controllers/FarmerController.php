@@ -8,6 +8,7 @@ use Session;
 use Input;
 use Redirect;
 use Image;
+use App\Crop;
 use App\Farmer;
 use App\Http\Requests;
 use App\Http\Requests\FarmersRequest;
@@ -44,7 +45,8 @@ class FarmerController extends Controller
     {
         //
         $title = "Farmers Connect: Farmers Page";
-        return view('farmer.create',compact('title'));
+        $crops = Crop::all();
+        return view('farmer.create',compact('title','crops'));
     }
 
     /**
@@ -55,7 +57,7 @@ class FarmerController extends Controller
      */
     public function store(FarmersRequest $request)
     {
-        //dd($request);
+        //dd($request->input('crop'));
             
         if ( ! $request->hasFile('file')) {
             //
@@ -78,10 +80,15 @@ class FarmerController extends Controller
         $request['key'] = str_random(20);
         //insartinto db
         $farmer = Farmer::create($request->all());
+        //attaching crop to farmer
         if ($farmer) {
+         $farmer->crops()->attach($request->input('crop'));
+         $farmer->save();
          Session::flash('message','Successful! You have created a farmer.');
          return view('farmer.card', compact('title','farmer'));  
         }
+        Session::flash('warning','Failed! Unable to created a farmer.');
+        return Redirect::back();
 
     }
 

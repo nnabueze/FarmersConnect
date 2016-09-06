@@ -84,6 +84,9 @@
                             <li>
                                 <a href="/assign">Assign Farmers</a>
                             </li>
+                            <li>
+                                <a href="/crops">Add Crops</a>
+                            </li>
                         </ul>
                     </li>
                     

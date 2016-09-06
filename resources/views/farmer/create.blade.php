@@ -134,9 +134,15 @@
 		    	                    </div>
 		    	                </div>
 		    	                <div class="form-group form-float">
-		    	                   <select name='crop' class="form-control show-tick" >
-		    	                       <option value=''>Select Crop</option>
-		    	                       <option value=''>No Permission</option>
+		    	                	<label class="form-label">Crop*</label>
+		    	                   <select name='crop[]' class="form-control show-tick" multiple>
+		    	                       @if($crops)
+		    	                       		@foreach($crops as $crop)
+		    	                       		<option value='{{$crop->id}}'>{{ucwords($crop->crop)}}</option>
+		    	                       		@endforeach()
+		    	                       @else
+		    	                       <option value=''>No Crop</option>
+		    	                       @endif
 		    	                   </select>
 		    	                </div>
 		    	            </fieldset>
