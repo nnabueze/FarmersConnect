@@ -32,6 +32,7 @@ Route::post('assign','DashboardController@assign');
 Route::get('admin/dashboard','DashboardController@index');//Display dashboard
 /*Route::get('user','DashboardController@user');*///Display dashboard
 Route::get('admin/logout','DashboardController@logout');//Logout from the systems
+Route::get('csv','CsvController@csv');
 
 
 ////////////////////////ACL///////////////////////////

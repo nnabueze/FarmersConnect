@@ -3,9 +3,6 @@
 
 <section class="content">
 	<div class="container-fluid">
-		<div class="block-header">
-			<h2>{{$title}}</h2>
-		</div>
 
 		<!-- Bordered Table -->
 
@@ -37,7 +34,7 @@
 							<div class='row'>
 								<div class='col-xs-6 col-md-4'>
 									<a href="javascript:void(0);" class="thumbnail">
-									    <img src="http://placehold.it/500x300" class="img-responsive">
+									    <img src="{{asset('uploads/farmers/'.$farmer->image)}}" class="img-responsive">
 									</a>
 								</div>
 								<div class='col-xs-6 col-md-4'>
@@ -58,7 +55,7 @@
 								</div>
 								<div class='col-xs-6 col-md-4'>
 										<a href="javascript:void(0);" class="thumbnail">
-										    {!! QrCode::size(100)->generate($farmer->key); !!}
+										    {!! QrCode::size(200)->generate($farmer->key); !!}
 										</a>
 								</div>
 							</div>

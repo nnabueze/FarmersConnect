@@ -324,6 +324,7 @@
     <script src="{{ asset ('/AdminTemplate/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
     <!-- Jquery Validation Plugin Css -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery-validation/jquery.validate.js') }}"></script>
+    <script src="{{ asset ('/AdminTemplate/js/bootstrap-filestyle.min.js') }}"></script>
     
 
     <!-- JQuery Steps Plugin Js -->

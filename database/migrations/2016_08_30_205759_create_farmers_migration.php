@@ -27,6 +27,7 @@ class CreateFarmersMigration extends Migration
             $table->enum('used_before', ['y', 'n']);
             $table->string('bank')->nullable();
             $table->string('account_no')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }

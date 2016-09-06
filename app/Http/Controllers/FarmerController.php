@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Session;
 use Input;
 use Redirect;
+use Image;
 use App\Farmer;
 use App\Http\Requests;
+use App\Http\Requests\FarmersRequest;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 
@@ -51,26 +53,27 @@ class FarmerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FarmersRequest $request)
     {
         //dd($request);
             
-        if ($request->hasFile('file')) {
+        if ( ! $request->hasFile('file')) {
             //
-            echo "good job";
-        die;
+            Session::flash('warning','Failed! please upload picture');
+            return Redirect::back();
         }
-           echo "uploading image";
-        die;
-        
-        $title ="Farmers Connect: profile page";
-        //check if email exist
-        $check = Farmer::where('email',$request->input('email'))->first();
 
-        if ($check) {
-           Session::flash('warning','Failed! Email already exist.');
-           return Redirect::back();
+        //check if email exist
+        $emailCheck = $this->emailCheck($request);
+        if ($emailCheck) {
+            Session::flash('warning','Failed! Email already exist');
+            return Redirect::back();
         }
+
+        //uploading image
+        $request['image'] = $this->image($request);
+       
+        $title ="Farmers Connect: profile page";
         //generate a random number
         $request['key'] = str_random(20);
         //insartinto db
@@ -140,18 +143,22 @@ class FarmerController extends Controller
     //uploading image
     public function image($request)
     {
-        if($request->file('file')){
-         echo "good job";
-         die;
-           $image = Input::file('image');
-           $filename  = time() . '.' . $image->getClientOriginalExtension();
+        $image = $request->file('file');
+        $imgName = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/farmers');
+        $img = Image::make($image->getRealPath())->resize(150, 200)->save($destinationPath.'/'.$imgName);
 
-           $path = public_path('profilepics/' . $filename);
+        return $imgName;
+    }
 
-       
-               Image::make($image->getRealPath())->resize(200, 200)->save($path);
-               $user->image = $filename;
-               $user->save();
+    //checking email
+    public function emailCheck($request)
+    {
+        $email = Farmer::where('email',$request->input('email'))->first();
+        if ($email) {
+            return TRUE;
+        }else{
+            return FALSE;
         }
     }
 }

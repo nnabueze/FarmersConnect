@@ -20,6 +20,7 @@ class Farmer extends Model
     'no_of_pack',
     'used_before',
     'bank',
-    'account_no'
+    'account_no',
+    'image'
     ];
 }

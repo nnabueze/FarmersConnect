@@ -3,45 +3,11 @@
 
 <section class="content">
 	<div class="container-fluid">
-		<div class="block-header">
-			<h2>{{$title}}</h2>
-		</div>
 
 		<!-- Advanced Form Example With Validation -->
 		
 		<div class="row clearfix">
-			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<div class="card">
-				    <div class="header">
-				        <ul class="header-dropdown m-r--5">
-				            <li class="dropdown">
-				                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				                    <i class="material-icons">more_vert</i>
-				                </a>
-				                <ul class="dropdown-menu pull-right">
-				                    <li><a href="javascript:void(0);">Action</a></li>
-				                    <li><a href="javascript:void(0);">Another action</a></li>
-				                    <li><a href="javascript:void(0);">Something else here</a></li>
-				                </ul>
-				            </li>
-				        </ul>
-				    </div>
-				    <div class="body">
-				        <form action="/farmers" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
-				            <div class="dz-message">
-				                <div class="drag-icon-cph">
-				                    <i class="material-icons">touch_app</i>
-				                </div>
-				                <h3>Drop files here or click to upload.</h3>
-				                <em>upload farmers passport</em>
-				            </div>
-				            <div class="fallback">
-				                <input name="file" type="file" />
-				            </div>
-				
-				    </div>
-				</div>
-			</div>
+
 		    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 		    	@include('include.warning')
 		    	@include('include.message')
@@ -63,6 +29,7 @@
 		    	        </ul>
 		    	    </div>
 		    	    <div class="body">
+		    	    	<form action="/farmers"  method="post" enctype="multipart/form-data">
 		    	        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		    	            <h3>Personal Details</h3>
 		    	            <fieldset>
@@ -87,13 +54,20 @@
 		    	                </div>
 
 		    	                <div class="form-line">
-		    	                <select name='state' class="form-control show-tick" >
+		    	                <select name='gender' class="form-control show-tick" >
 		    	                    <option value=''>Select Gender</option>
-		    	                    <option value=''>No Permission</option>
-		    	                    <option value=''>No Permission</option>
+		    	                    <option value='m'>Male</option>
+		    	                    <option value='f'>Female</option>
 		    	                </select>
 		    	                </div>
 		    	                <br />
+		    	                <div class="form-group form-float">
+		    	                	<label class="form-label">Picture*</label>
+		    	                    <div class="form-line">
+		    	                        <input type="file" name="file" class="filestyle" data-buttonBefore="true">
+		    	                    </div>
+
+		    	                </div>
 		    	            </fieldset>
 
 		    	            <h3>Farm Details</h3>
@@ -102,29 +76,65 @@
 		    	            	<div class="form-group form-float">
 		    	            	   <select name='state' class="form-control show-tick" >
 		    	            	       <option value=''>Select State*</option>
-		    	            	       <option value=''>No Permission</option>
+		    	            	       <option value='ABUJA'>ABUJA FCT</option>
+		    	            	       <option value='ABIA'>ABIA</option>
+		    	            	       <option value='ADAMAWA'>ADAMAWA</option>
+		    	            	       <option value='AKWA IBOM'>AKWA IBOM</option>
+		    	            	       <option value='ANAMBRA'>ANAMBRA</option>
+		    	            	       <option value='BAUCHI'>BAUCHI</option>
+		    	            	       <option value='BAYELSA'>BAYELSA</option>
+		    	            	       <option value='BENUE'>BENUE</option>
+		    	            	       <option value='BORNO'>BORNO</option>
+		    	            	       <option value='CROSS RIVER'>CROSS RIVER</option>
+		    	            	       <option value='DELTA'>DELTA</option>
+		    	            	       <option value='EBONYI'>EBONYI</option>
+		    	            	       <option value='EDO'>EDO</option>
+		    	            	       <option value='EKITI'>EKITI</option>
+		    	            	       <option value='ENUGU'>ENUGU</option>
+		    	            	       <option value='GOMBE'>GOMBE</option>
+		    	            	       <option value='IMO'>IMO</option>
+		    	            	       <option value='JIGAWA'>JIGAWA</option>
+		    	            	       <option value='KADUNA'>KADUNA</option>
+		    	            	       <option value='KANO'>KANO</option>
+		    	            	       <option value='KATSINA'>KATSINA</option>
+		    	            	       <option value='KEBBI'>KEBBI</option>
+		    	            	       <option value='KOGI'>KOGI</option>
+		    	            	       <option value='KWARA'>KWARA</option>
+		    	            	       <option value='LAGOS'>LAGOS</option>
+		    	            	       <option value='NASSARAWA'>NASSARAWA</option>
+		    	            	       <option value='NIGER'>NIGER</option>
+		    	            	       <option value='OGUN'>OGUN</option>
+		    	            	       <option value='ONDO'>ONDO</option>
+		    	            	       <option value='OSUN'>OSUN</option>
+		    	            	       <option value='OYO'>OYO</option>
+		    	            	       <option value='PLATEAU'>PLATEAU</option>
+		    	            	       <option value='RIVERS'>RIVERS</option>
+		    	            	       <option value='SOKOTO'>SOKOTO</option>
+		    	            	       <option value='TARABA'>TARABA</option>
+		    	            	       <option value='YOBE'>YOBE</option>
+		    	            	       <option value='ZAMFARA'>ZAMFARA</option>
 		    	            	   </select>
 		    	            	</div>
 		    	                <div class="form-group form-float">
 		    	                    <div class="form-line">
-		    	                        <input type="text" class="form-control" name="phone" >
+		    	                        <input type="text" class="form-control" name="lga" >
 		    	                        <label class="form-label">LGA*</label>
 		    	                    </div>
 		    	                </div>
 		    	                <div class="form-group form-float">
 		    	                    <div class="form-line">
-		    	                        <input type="text" class="form-control" name="phone" >
+		    	                        <input type="text" class="form-control" name="village" >
 		    	                        <label class="form-label">Village*</label>
 		    	                    </div>
 		    	                </div>
 		    	                <div class="form-group form-float">
 		    	                    <div class="form-line">
-		    	                        <input type="text" class="form-control" name="phone" >
+		    	                        <input type="text" class="form-control" name="farm_size" >
 		    	                        <label class="form-label">Farm Size*</label>
 		    	                    </div>
 		    	                </div>
 		    	                <div class="form-group form-float">
-		    	                   <select name='state' class="form-control show-tick" >
+		    	                   <select name='crop' class="form-control show-tick" >
 		    	                       <option value=''>Select Crop</option>
 		    	                       <option value=''>No Permission</option>
 		    	                   </select>
@@ -135,26 +145,33 @@
 		    	            <fieldset>
 		    	            	<div class="form-group form-float">
 		    	            	    <div class="form-line">
-		    	            	        <input type="text" class="form-control" name="phone" >
+		    	            	        <input type="text" class="form-control" name="no_of_pack" >
 		    	            	        <label class="form-label">No of Pack*</label>
 		    	            	    </div>
 		    	            	</div>
 		    	            	<div class="form-group form-float">
-		    	            	   <select name='state' class="form-control show-tick" >
+		    	            	   <select name='used_before' class="form-control show-tick" >
 		    	            	       <option value=''>Select Used</option>
 		    	            	       <option value='y'>YES</option>
 		    	            	       <option value='n'>NO</option>
 		    	            	   </select>
 		    	            	</div>
 		    	            	<div class="form-group form-float">
-		    	            	   <select name='state' class="form-control show-tick" >
+		    	            	   <select name='bank' class="form-control show-tick" >
 		    	            	       <option value=''>Select Bank</option>
-		    	            	       <option value=''>No Permission</option>
+		    	            	       <option value='Access Bank'>Access Bank</option>
+		    	            	       <option value='Diamond Bank'>Diamond Bank</option>
+		    	            	       <option value='Guaranty Trust Bank'>Guaranty Trust Bank</option>
+		    	            	       <option value='United Bank for Africa'>United Bank for Africa</option>
+		    	            	       <option value='Zenith Bank'>Zenith Bank</option>
+		    	            	       <option value='Aso Savings & Loans'>Aso Savings & Loans</option>
+		    	            	       <option value='Enterprise Bank'>Enterprise Bank</option>
+		    	            	       <option value='Ecobank'>Ecobank</option>
 		    	            	   </select>
 		    	            	</div>
 		    	            	<div class="form-group form-float">
 		    	            	    <div class="form-line">
-		    	            	        <input type="text" class="form-control" name="phone" >
+		    	            	        <input type="text" class="form-control" name="account_no" >
 		    	            	        <label class="form-label">Account No*</label>
 		    	            	    </div>
 		    	            	</div>
