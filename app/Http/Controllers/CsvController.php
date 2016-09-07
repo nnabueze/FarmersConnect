@@ -10,6 +10,7 @@ use Session;
 use Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CsvController extends Controller
 {
@@ -35,17 +36,26 @@ class CsvController extends Controller
     	try {
     	    Excel::load($request->file('file'), function ($reader) {
 
-    	        $reader->each(function($sheet) {    
-    	            foreach ($sheet->toArray() as $row) {
-    	               Farmer::firstOrCreate($row);
-    	            }
-    	        });
+                $reader->each(function($sheet) {
+
+                    // Loop through all rows
+                    $sheet->each(function($row) {
+                        $row = $row->toArray();
+                        $row['key'] = str_random(20);
+                        $farmer = Farmer::create($row);
+                        $crop = Crop::where('crop',$row['crop'])->first();
+                        $farmer->crops()->attach($crop->id);
+                        $farmer->save();
+                    });
+
+                });
+
     	    });
-    	    \Session::flash('message', 'Users uploaded successfully.');
-    	    return redirect(route('csv'));
+    	    Session::flash('message', 'Users uploaded successfully.');
+    	    return Redirect::to('csv');
     	} catch (\Exception $e) {
-    	    \Session::flash('error', $e->getMessage());
-    	    return redirect(route('csv'));
+    	    Session::flash('warning', $e->getMessage());
+    	    return Redirect::to('csv');
     	}
     }
 
