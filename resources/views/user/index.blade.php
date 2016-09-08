@@ -59,9 +59,15 @@
 											{{ucwords($role['name'])}}&nbsp;
 									@endforeach
 									</td>
-									<td style="width:13%">
+									<td style="width:18%">
 										<span class='pull-left'>
-											<a href='#' class='btn btn-default sm-btn' role='button'><span class="glyphicon glyphicon-edit"></span> </a>
+											<!-- <a href='#' class='btn btn-default sm-btn' role='button'><span class="glyphicon glyphicon-edit"></span> </a> -->
+											@if($user['status'] == 'pending')
+											<a href='#' class='btn btn-default sm-btn' role='button'>Activate </a>
+											@endif
+											@if($user['status'] == 'active')
+											<a href='#' class='btn btn-default sm-btn' role='button'>Suspend</a>
+											@endif
 										</span>
 										<span class='pull-right'>
 										<form class="delete" action='/users/{{$user->id}}' method='POST'>

@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         //
         $roles = Role::all();
-        $users = User::with('roles')->paginate(3);
+        $users = User::with('roles')->where('user',1)->paginate(3);
         $title = 'Fermers Connect: Users Page';
         return view('user.index', compact('title','roles','users'));
     }
@@ -64,6 +64,7 @@ class UserController extends Controller
            return Redirect::back();
         }
         $request['password'] = Hash::make($request->input('password'));
+        $request['user'] = 1;
       $user = User::create($request->all());
       $user->attachRole($request->input('role'));
 

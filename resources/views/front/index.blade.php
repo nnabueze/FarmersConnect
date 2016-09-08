@@ -7,7 +7,7 @@
         <h1 class="animated fadeInLeftBig">Welcome to Farmers <span>Connect</span></h1>
         <p class="animated fadeInRightBig">Commercial Project</p>
         <a data-scroll class="btn btn-start animated fadeInUpBig" href="#">Dealer Register</a>
-        <a data-scroll class="btn btn-start animated fadeInDownBig" href="#">Workers Register</a>
+        <a data-scroll class="btn btn-start animated fadeInDownBig" href="/worker/create">Workers Register</a>
      
       </div>
     </div>
@@ -16,7 +16,7 @@
         <h1 class="animated fadeInLeftBig">Welcome to Farmers <span>Connect</span></h1>
         <p class="animated fadeInRightBig">unique platform that enables input sellers expand</p>
         <a data-scroll class="btn btn-start animated fadeInUpBig" href="#">Dealer Register</a>
-        <a data-scroll class="btn btn-start animated fadeInDownBig" href="#">Workers Register</a>
+        <a data-scroll class="btn btn-start animated fadeInDownBig" href="/worker/create">Workers Register</a>
       </div>
     </div>
     <div class="item" style="background-image: url({{ asset('template3/images/slider/image9.jpg')}})">
@@ -24,7 +24,7 @@
         <h1 class="animated fadeInLeftBig">Welcome to Farmers <span>Connect</span></h1>
         <p class="animated fadeInRightBig">unique platform that enables input sellers expand</p>
         <a data-scroll class="btn btn-start animated fadeInUpBig" href="#">Dealer Register</a>
-        <a data-scroll class="btn btn-start animated fadeInDownBig" href="#">Workers Register</a>
+        <a data-scroll class="btn btn-start animated fadeInDownBig" href="/worker/create">Workers Register</a>
       </div>
     </div>
   </div>

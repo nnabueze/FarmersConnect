@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 //worker Registration
-Route::get('/worker', function () {
+/*Route::get('/worker', function () {
     return view('worker.create');
-});
+});*/
 
 //Route for listing farmers
 Route::controller('datatables', 'DatatablesController', [
@@ -50,4 +50,7 @@ Route::resource('role','RoleController');
 Route::resource('/users','UserController');
 /////////////////////////Faermers/////////////////////////
 Route::resource('/farmers','FarmerController');
+////////////////////////////////////////////////////////////
+//worker Registration
+Route::resource('/worker','WorkerController');
 

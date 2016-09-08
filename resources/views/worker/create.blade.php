@@ -11,6 +11,10 @@
 <section>
   <div class="container-fluid">
   	<div class='col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3'>
+  @if(Session::has('message'))
+      @include('include.message')
+  @else
+
   		<div class="stepwizard">
   		    <div class="stepwizard-row setup-panel">
   		        <div class="stepwizard-step">
@@ -30,12 +34,15 @@
   		<br />
   		<br />
   		<h2 class='text-center'>Agro Worker Registration</h2>
-  		<form role="form" action="" method="POST">
+      @include('include.warning')
+      @include('include.error')
+  		<form role="form" action="/worker" method="POST">
   		    <div class="row setup-content" id="step-1">
   		        <div class="col-xs-12">
   		            <div class="col-md-12">
   		            	<br />
   		            	<br />
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
   		                <div class="form-group">
   		                    <label class="control-label">First Name</label>
   		                    <input  maxlength="100" type="text" name="first_name" class="form-control" placeholder="Enter First Name"  />
@@ -155,8 +162,8 @@
   		        </div>
   		    </div>
   		</form>
+      @endif
   	</div>
-
   </div>
 </section><!--/#features-->
 @stop
