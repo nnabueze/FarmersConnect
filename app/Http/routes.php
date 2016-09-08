@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.index');
 });
 
+//worker Registration
+Route::get('/worker', function () {
+    return view('worker.create');
+});
 
 //Route for listing farmers
 Route::controller('datatables', 'DatatablesController', [
