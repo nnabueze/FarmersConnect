@@ -137,14 +137,35 @@ class UserController extends Controller
     {
         //
     $user = User::where('id',$id)->with('roles')->first();
-/*    foreach($user->roles as $role){
-        if ($role['name'] == 'Super Admin') {
+    foreach($user->roles as $role){
+        if ($role['slug'] == 'superadmin') {
            Session::flash('warning', 'Failed! Unable to delete a User');
            return Redirect::back();
         }
-    }*/
+    }
     $user->delete();
     Session::flash('message', 'Success! You have deleted a User');
     return Redirect::back();
+    }
+
+    //activating a USER
+    public function status(Request $request)
+    {
+        $user = User::where('id',$request->input('id'))->first();
+
+        switch($user->status){
+            case "suspend":
+                $user->status = 'active';
+                $user->save();
+                return Redirect::to('users');
+            case "active":
+                $user->status = 'suspend';
+                $user->save();
+                return Redirect::to('users');
+            default:
+                $user->status = 'active';
+                $user->save();
+                return Redirect::to('users');
+        }
     }
 }

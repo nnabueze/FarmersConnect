@@ -194,27 +194,25 @@ class WorkerController extends Controller
     }
 
     //workers email confirmation
-    public function emailConfirm($token, $id)
+    public function emailConfirm($token, $id, $email)
     {
-/*        print_r($token.' '.$id);
-        die;*/
+
         //check if user exist
         $worker = Worker::where('token', $token)->first();
         //update user status
-/*        echo "<pre>";
-        print_r($worker);
-        die;*/
+
         if ($worker->token == $token && $worker->status == 'pending') {
             $worker->status = 'active';
             $worker->save();
 
+            $user = User::where('email',$email)->first();
+            $user->status = 'active';
+            $user->save();
 
             Session::flash('message','Successful! Please login ');
             return Redirect::to('/admin');
         }
         Session::flash('warning','Failed! Token Mismatch ');
         return Redirect::to('/admin');
-
-        //redirect user to login page
     }
 }

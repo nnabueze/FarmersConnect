@@ -63,10 +63,34 @@
 										<span class='pull-left'>
 											<!-- <a href='#' class='btn btn-default sm-btn' role='button'><span class="glyphicon glyphicon-edit"></span> </a> -->
 											@if($user['status'] == 'pending')
-											<a href='#' class='btn btn-default sm-btn' role='button'>Activate </a>
+											<form action='/status' method='POST'>
+												
+												<input type="hidden" name="_token" value="{{ csrf_token() }}">
+												<input type="hidden" name="id" value="{{ $user['id'] }}">
+												<button type="submit" class="btn btn-default waves-effect">
+												    Activate
+												</button>
+											</form>
+											@endif
+											@if($user['status'] == 'suspend')
+											<form action='/status' method='POST'>
+												
+												<input type="hidden" name="_token" value="{{ csrf_token() }}">
+												<input type="hidden" name="id" value="{{ $user['id'] }}">
+												<button type="submit" class="btn btn-default waves-effect">
+												    Activate
+												</button>
+											</form>
 											@endif
 											@if($user['status'] == 'active')
-											<a href='#' class='btn btn-default sm-btn' role='button'>Suspend</a>
+											<form action='/status' method='POST'>
+												
+												<input type="hidden" name="_token" value="{{ csrf_token() }}">
+												<input type="hidden" name="id" value="{{ $user['id'] }}">
+												<button type="submit" class="btn btn-default waves-effect">
+												    Suspend
+												</button>
+											</form>
 											@endif
 										</span>
 										<span class='pull-right'>

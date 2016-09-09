@@ -46,8 +46,10 @@ Route::post('csv','CsvController@upload');
 Route::get('crops','CsvController@crop');
 Route::post('crops','CsvController@addCrop');
 Route::delete('crops/{any}','CsvController@deleteCrop');
-//workers email confirmation
-Route::get('email/{token}/{id}',['as'=>'email','uses'=>'WorkerController@emailConfirm']);
+//workers email confirm
+Route::get('email/{token}/{id}/{email}',['as'=>'email','uses'=>'WorkerController@emailConfirm']);
+//changing user status
+Route::post('status','UserController@status');
 
 
 ////////////////////////ACL///////////////////////////

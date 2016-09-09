@@ -33,6 +33,7 @@
         </div>
         <div class="card">
             @include('include.warning')
+            @include('include.message')
             <div class="body">
                 <form id="sign_in" method="POST" action"/admin">
                     <div class="msg">Sign in to start your session</div>
