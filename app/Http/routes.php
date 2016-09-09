@@ -55,6 +55,8 @@ Route::post('crops','CsvController@addCrop');
 Route::delete('crops/{any}','CsvController@deleteCrop');
 //workers email confirm
 Route::get('email/{token}/{id}/{email}',['as'=>'email','uses'=>'WorkerController@emailConfirm']);
+//Dealer email confirmation
+Route::get('emaildealer/{token}/{id}/{email}',['as'=>'emaildealer','uses'=>'DealerController@emailConfirm']);
 //changing user status
 Route::post('status','UserController@status');
 
@@ -69,4 +71,6 @@ Route::resource('/farmers','FarmerController');
 ////////////////////////////////////////////////////////////
 //worker Registration
 Route::resource('/worker','WorkerController');
+//Dealer Registration
+Route::resource('/dealer','DealerController');
 
