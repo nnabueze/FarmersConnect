@@ -30,6 +30,11 @@ Route::controller('assign', 'AssignController', [
     'anyData'  => 'assign.data',
     'getIndex' => 'assign',
 ]);
+//Route worker datatable
+Route::controller('work', 'DataWorkerController', [
+    'anyData'  => 'work.data',
+    'getIndex' => 'work',
+]);
 Route::post('assign','DashboardController@assign');
 
 
@@ -41,6 +46,8 @@ Route::post('csv','CsvController@upload');
 Route::get('crops','CsvController@crop');
 Route::post('crops','CsvController@addCrop');
 Route::delete('crops/{any}','CsvController@deleteCrop');
+//workers email confirmation
+Route::get('email/{token}/{id}',['as'=>'email','uses'=>'WorkerController@emailConfirm']);
 
 
 ////////////////////////ACL///////////////////////////

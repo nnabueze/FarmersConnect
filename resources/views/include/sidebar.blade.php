@@ -89,6 +89,21 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">perm_media</i>
+                            <span>Extension Worker</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="work">View Worker</a>
+                            </li>
+                            <li>
+                                <a href="#">Assign Worker</a>
+                            </li>
+                        </ul>
+                    </li>
                     
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -104,20 +119,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">perm_media</i>
-                            <span>Extension Worker</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="#">View Worker</a>
-                            </li>
-                            <li>
-                                <a href="#">Assign Worker</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li>
                         <a href="/admin/logout">
                             <i class="material-icons">layers</i>

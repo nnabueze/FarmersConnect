@@ -9,7 +9,7 @@
         <p>Email: {{$user->email}}</p>
         <p>Password: {{$password}}</p>
         <p>Phone: {{$user->phone}}</p>
-        <p>Please<a href='#'><strong>CLICK HERE</strong></a> to activate your account</p>
+        <p>Please<a href="{{ URL::route('email', array('token' => $token,'id'=>$user->id)) }}"><strong>CLICK HERE</strong></a> to activate your account</p>
         <p><i>N/B:&nbsp;You are advice to change your password..</i></p>
     </div>
 </div>

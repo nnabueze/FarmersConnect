@@ -30,6 +30,7 @@ class Worker extends Model
     	'bvn',
     	'account_number',
     	'account_name',
-    	'key'
+    	'key',
+        'token'
     ];
 }

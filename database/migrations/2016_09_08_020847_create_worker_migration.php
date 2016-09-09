@@ -22,6 +22,7 @@ class CreateWorkerMigration extends Migration
             $table->enum('gender', ['m', 'f']);
             $table->string('email');
             $table->string('phone');
+            $table->string('village');
             $table->string('type_of_residence');
             $table->string('marital_status');
             $table->string('education');
@@ -32,6 +33,7 @@ class CreateWorkerMigration extends Migration
             $table->string('bvn');
             $table->string('account_number');
             $table->string('account_name');
+            $table->string('token');
             $table->enum('status', ['pending', 'active','suspend']);
             $table->timestamps();
         });

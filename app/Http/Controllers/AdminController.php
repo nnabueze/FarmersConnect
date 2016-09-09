@@ -55,6 +55,12 @@ class AdminController extends Controller
     {
         //
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+/*            print_r(Auth::user()->Roles[0]['name']);
+            die;*/
+            if (Auth::user()->status ==='pending' ) {
+                Session::flash('warning', 'Account not activated');           
+                return Redirect::to('admin/logout');
+            }
             return redirect()->intended('admin/dashboard');
         } else {
             Session::flash('warning', 'Invalid login credentials');           

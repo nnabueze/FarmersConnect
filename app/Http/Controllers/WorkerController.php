@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 use Mail;
 use Hash;
+use Input;
 use Redirect;
 use Session;
 use App\User;
 use App\Worker;
+use App\Farmer;
 use App\Http\Requests;
 use Bican\Roles\Models\Role;
 use App\Http\Controllers\Controller;
@@ -20,7 +22,7 @@ class WorkerController extends Controller
     {
 
         $this->middleware('auth', ['except' => [
-             'create','store'
+             'create','store','emailConfirm'
          ]]);
 
     }
@@ -32,6 +34,8 @@ class WorkerController extends Controller
     public function index()
     {
         //
+        $title = "Farmers Connect: Worker Page";
+        return view('worker.index',compact('title'));
     }
 
     /**
@@ -63,18 +67,18 @@ class WorkerController extends Controller
         }
         //generate key
         $request['key'] = str_random(20);
+        //generate password
+        $password = str_random(6);
+        $password_hash = Hash::make($password);
+        $token = str_random(64);
+        $request['token'] = $token;
         //insert into workers table
         $worker = Worker::create($request->all());
-/*        print_r($request->all());
-        die;*/
+
         if ( ! $worker) {
           Session::flash('warning','Failed! Unable to create user');
           return Redirect::back();
         }
-        //generate password
-        $password = str_random(6);
-        $password_hash = Hash::make($password);
-        $token = Hash::make($password.$request->input('email'));
         //insert into user table
         $user = $this->insertUser($request, $password_hash);
         
@@ -97,6 +101,10 @@ class WorkerController extends Controller
     public function show($id)
     {
         //
+        $title = 'Farmers Connect: Worker Details';
+        $worker = Worker::where('id',$id)->first();
+        //dd($farmer);
+        return view('worker.show',compact('title','worker'));
     }
 
     /**
@@ -108,6 +116,8 @@ class WorkerController extends Controller
     public function edit($id)
     {
         //
+        echo "edit method";
+        die;
     }
 
     /**
@@ -120,6 +130,8 @@ class WorkerController extends Controller
     public function update(Request $request, $id)
     {
         //
+        echo "update method";
+        die;
     }
 
     /**
@@ -131,6 +143,8 @@ class WorkerController extends Controller
     public function destroy($id)
     {
         //
+        echo "delete method";
+        die;
     }
 
     //inserting into user table
@@ -164,5 +178,43 @@ class WorkerController extends Controller
             $m->from('oparannabueze@gmail.com', 'Farmers Connect Registration');
             $m->to($register->email, $register->first_name)->subject('Farmers Connect Registration Successful!');
         });
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return Datatables::of(Farmer::query())->with('crops')->addColumn('action', function ($id) {
+            return '<a href="farmers/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+        })->make(true);
+    }
+
+    //workers email confirmation
+    public function emailConfirm($token, $id)
+    {
+/*        print_r($token.' '.$id);
+        die;*/
+        //check if user exist
+        $worker = Worker::where('token', $token)->first();
+        //update user status
+/*        echo "<pre>";
+        print_r($worker);
+        die;*/
+        if ($worker->token == $token && $worker->status == 'pending') {
+            $worker->status = 'active';
+            $worker->save();
+
+
+            Session::flash('message','Successful! Please login ');
+            return Redirect::to('/admin');
+        }
+        Session::flash('warning','Failed! Token Mismatch ');
+        return Redirect::to('/admin');
+
+        //redirect user to login page
     }
 }
