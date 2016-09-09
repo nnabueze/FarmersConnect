@@ -43,6 +43,14 @@ class DashboardController extends Controller
         echo "<pre>";
         print_r($request->all());
         die;
+    }    
+
+    //assigning workers
+    public function assignWorker(Request $request)
+    {
+        echo "<pre>";
+        print_r($request->all());
+        die;
     }
 
     //logout from the system

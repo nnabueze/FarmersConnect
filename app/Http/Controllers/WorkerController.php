@@ -13,6 +13,7 @@ use App\User;
 use App\Worker;
 use App\Farmer;
 use App\Http\Requests;
+use App\Http\Requests\WorkerRequest;
 use Bican\Roles\Models\Role;
 use App\Http\Controllers\Controller;
 
@@ -55,10 +56,9 @@ class WorkerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkerRequest $request)
     {
         //
-
         //check if email
         $check_worker = Worker::where('email',$request->input('email'))->first();
         if ($check_worker) {

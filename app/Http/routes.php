@@ -30,12 +30,19 @@ Route::controller('assign', 'AssignController', [
     'anyData'  => 'assign.data',
     'getIndex' => 'assign',
 ]);
+Route::post('assign','DashboardController@assign');
+
 //Route worker datatable
 Route::controller('work', 'DataWorkerController', [
     'anyData'  => 'work.data',
     'getIndex' => 'work',
 ]);
-Route::post('assign','DashboardController@assign');
+Route::controller('assignworker', 'AssignWorkerController', [
+    'anyData'  => 'assignworker.data',
+    'getIndex' => 'assignworker',
+]);
+Route::post('workerassign','DashboardController@assignWorker');
+
 
 
 Route::get('admin/dashboard','DashboardController@index');//Display dashboard
