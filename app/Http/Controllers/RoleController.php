@@ -28,7 +28,7 @@ class RoleController extends Controller
     {
         //
         $permissions = Permission::all();
-        $roles = Role::with('permissions')->paginate(3);
+        $roles = Role::with('permissions')->paginate(13);
         $title = "Farmers Connect: Role Page";
         return view('role.index',compact('title', 'permissions','roles'));
     }

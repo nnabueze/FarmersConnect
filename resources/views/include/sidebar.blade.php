@@ -114,10 +114,10 @@
                     </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="#">Create Scheme</a>
+                                <a href="/scheme/create">Create Scheme</a>
                             </li>
                             <li>
-                                <a href="#">View Scheme</a>
+                                <a href="/viewscheme">View Scheme</a>
                             </li>
                         </ul>
                     </li>

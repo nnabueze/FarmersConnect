@@ -79,7 +79,7 @@
 								@endif
 							</tbody>
 						</table>
-						<span class='pull-right'>{{ $roles->render() }}</span>
+						<span class='pull-right'></span>
 					</div>
 				</div>
 			</div><!-- End of First Colum -->

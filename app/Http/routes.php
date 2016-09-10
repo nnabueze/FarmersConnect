@@ -15,11 +15,6 @@ Route::get('/', function () {
     return view('front.index');
 });
 
-//worker Registration
-/*Route::get('/worker', function () {
-    return view('worker.create');
-});*/
-
 //Route for listing farmers
 Route::controller('datatables', 'DatatablesController', [
     'anyData'  => 'datatables.data',
@@ -52,11 +47,15 @@ Route::controller('assigndealer', 'AssignDealerController', [
     'anyData'  => 'assigndealer.data',
     'getIndex' => 'assigndealer',
 ]);
-
-
-Route::get('admin/dashboard','DashboardController@index');//Display dashboard
-/*Route::get('user','DashboardController@user');*///Display dashboard
-Route::get('admin/logout','DashboardController@logout');//Logout from the systems
+//view scheme
+Route::controller('viewscheme', 'DataSchemeController', [
+    'anyData'  => 'viewscheme.data',
+    'getIndex' => 'viewscheme',
+]);
+//Display dashboard
+Route::get('admin/dashboard','DashboardController@index');
+//Logout from the systems
+Route::get('admin/logout','DashboardController@logout');
 Route::get('csv','CsvController@csv');
 Route::post('csv','CsvController@upload');
 Route::get('crops','CsvController@crop');
@@ -80,6 +79,10 @@ Route::resource('/farmers','FarmerController');
 ////////////////////////////////////////////////////////////
 //worker Registration
 Route::resource('/worker','WorkerController');
+//////////////////////////////////////////////////////////
 //Dealer Registration
 Route::resource('/dealer','DealerController');
+////////////////////////////////////////////////////////////
+//scheme
+Route::resource('/scheme','SchemeController');
 
