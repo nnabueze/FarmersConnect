@@ -221,6 +221,8 @@
     <!-- Select Plugin Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{{ asset ('/AdminTemplate/plugins/jquery-countto/jquery.countTo.js') }}"></script>
     <!-- Slimscroll Plugin Js -->
     <script src="{{ asset ('/AdminTemplate/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 

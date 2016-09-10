@@ -173,8 +173,7 @@ class DealerController extends Controller
     //Dealer email confirmation
     public function emailConfirm($token, $id, $email)
     {
-/*        print_r($token .' '.$id.' '.$email);
-        die;*/
+
         //check if user exist
         $dealer = Dealer::where('token', $token)->first();
         //update user status

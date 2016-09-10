@@ -43,6 +43,15 @@ Route::controller('assignworker', 'AssignWorkerController', [
 ]);
 Route::post('workerassign','DashboardController@assignWorker');
 
+//Route for viewing dealer and assigning
+Route::controller('viewdealer', 'DataDealerController', [
+    'anyData'  => 'viewdealer.data',
+    'getIndex' => 'viewdealer',
+]);
+Route::controller('assigndealer', 'AssignDealerController', [
+    'anyData'  => 'assigndealer.data',
+    'getIndex' => 'assigndealer',
+]);
 
 
 Route::get('admin/dashboard','DashboardController@index');//Display dashboard
