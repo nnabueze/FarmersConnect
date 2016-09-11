@@ -58,6 +58,18 @@
 		    	                        <input type="file" name="file" class="filestyle" data-buttonBefore="true">
 		    	                    </div>
 		    	                </div>
+		    	                <div class="form-group form-float">
+		    	                	<label class="form-label">Select Activity*</label>
+		    	                   <select name='activity[]' class="form-control show-tick" multiple >
+		    	                       @if($activities)
+		    	                       	@foreach($activities as $activity)
+		    	                       <option value='{{$activity->id}}'>{{$activity->name}}</option>
+		    	                       @endforeach
+		    	                       @else
+		    	                       <option value=' '>NO Activity</option>
+		    	                       @endif
+		    	                   </select>
+		    	                </div>
 
 		    	            </fieldset>
 

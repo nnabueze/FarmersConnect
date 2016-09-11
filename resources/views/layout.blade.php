@@ -109,6 +109,7 @@
     <script type="text/javascript" src="{{ asset('template3/js/lightbox.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('template3/js/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('template3/js/formwizard.js')}}"></script>
+    <script src="{{ asset ('/AdminTemplate/js/bootstrap-filestyle.min.js') }}"></script>
 
   </body>
   </html>

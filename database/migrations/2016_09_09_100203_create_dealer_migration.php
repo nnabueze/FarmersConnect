@@ -31,6 +31,8 @@ class CreateDealerMigration extends Migration
             $table->string('bvn');
             $table->string('account_number');
             $table->string('account_name');
+            $table->string('logo');
+            $table->string('image');
             $table->enum('status', ['pending', 'active','suspend']);
             $table->string('token');
             $table->timestamps();

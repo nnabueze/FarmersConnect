@@ -38,8 +38,8 @@ class DataDealerController extends Controller
     public function anyData()
     {
         return Datatables::of(Dealer::query())->with('crops')->addColumn('action', function ($id) {
-            return '<a href="dealer/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-            <button class="btn-delete btn btn-default" data-remote="/dealer/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+            return '<a href="dealer/' . $id->key . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/dealer/' . $id->key . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
         })->make(true);
     }
 }

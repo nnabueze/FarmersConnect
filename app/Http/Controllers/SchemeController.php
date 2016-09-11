@@ -9,6 +9,7 @@ use Redirect;
 use Mail;
 use Image;
 use Hash;
+use App\Activity;
 use File;
 use App\Scheme;
 use App\User;
@@ -48,9 +49,9 @@ class SchemeController extends Controller
     public function create()
     {
         //
-
+        $activities = Activity::all();
         $title = "Farmers Connect: Scheme Page";
-        return view('scheme.create',compact('title'));
+        return view('scheme.create',compact('title','activities'));
     }
 
     /**
@@ -79,6 +80,8 @@ class SchemeController extends Controller
         $password_hash = Hash::make($password);
         //create scheme
         $scheme = Scheme::create($request->all());
+        $scheme->activities()->attach($request['activity']);
+        $scheme->save();
 
         if ( ! $scheme) {
             Session::flash('warning','Failed! Unable to create scheme');
@@ -105,7 +108,7 @@ class SchemeController extends Controller
     {
         //
        $title = 'Farmers Connect: Scheme Details';
-       $scheme = Scheme::where('id',$id)->first();
+       $scheme = Scheme::where('key',$id)->first();
        //dd($farmer);
        return view('scheme.show',compact('title','scheme'));
     }

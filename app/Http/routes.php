@@ -85,4 +85,7 @@ Route::resource('/dealer','DealerController');
 ////////////////////////////////////////////////////////////
 //scheme
 Route::resource('/scheme','SchemeController');
+//////////////////////////////////////////////////////////
+//activity
+Route::resource('/activity','ActivityController');
 

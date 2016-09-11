@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Mail;
 use Hash;
 use Redirect;
+use File;
+use Image;
 use Session;
 use App\User;
 use App\Dealer;
 use App\Http\Requests;
+use App\Http\Requests\DealerRequest;
 use Bican\Roles\Models\Role;
 use App\Http\Controllers\Controller;
 
@@ -32,6 +35,8 @@ class DealerController extends Controller
     public function index()
     {
         //
+        $title = "Farmers Connect: Dealer Page";
+        return view('dealer.index',compact('title'));
     }
 
     /**
@@ -51,7 +56,7 @@ class DealerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DealerRequest $request)
     {
         //
 /*        echo "<pre>";
@@ -72,6 +77,10 @@ class DealerController extends Controller
         $token = str_random(64);
         $request['token'] = $token;
         //insert into workers table
+
+        $request['logo'] = $this->image($request);
+        $request['image'] = $this->image2($request);
+
         $dealer = Dealer::create($request->all());
 
         if ( ! $dealer) {
@@ -100,6 +109,10 @@ class DealerController extends Controller
     public function show($id)
     {
         //
+        $title = 'Farmers Connect: Dealer Details';
+        $dealer = Dealer::where('key',$id)->first();
+        //dd($farmer);
+        return view('dealer.show',compact('title','dealer'));
     }
 
     /**
@@ -134,6 +147,21 @@ class DealerController extends Controller
     public function destroy($id)
     {
         //
+        $dealer = Dealer::where('id',$id)->first();
+        if ($dealer) {
+            File::delete(public_path().'/uploads/logo/'.$dealer->logo,public_path().'/uploads/dealer/'.$dealer->image);
+            /*unlink(public_path().'/uploads/logo'.$dealer->logo);
+            unlink(public_path().'/uploads/dealer'.$dealer->image);*/
+            $dealer->delete($id);
+
+            $user = User::where('email',$dealer->company_email)->first();
+            $user->delete($user->id);
+
+            Session::flash('message','Successful! You have deleted a Dealer');
+            return Redirect::to('/viewscheme');
+        }
+        Session::flash('warning','Failed! Unable to delete Dealer');
+        return Redirect::back();
     }
 
     //inserting into user table
@@ -191,5 +219,27 @@ class DealerController extends Controller
         }
         Session::flash('warning','Failed! Token Mismatch ');
         return Redirect::to('/admin');
+    }
+
+    //uploading image
+    private function image($request)
+    {
+        $image = $request->file('file');
+        $imgName = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/logo');
+        $img = Image::make($image->getRealPath())->resize(100, 50)->save($destinationPath.'/'.$imgName);
+
+        return $imgName;
+    }
+
+    //uploading image
+    private function image2($request)
+    {
+        $image = $request->file('file1');
+        $imgName = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/dealer');
+        $img = Image::make($image->getRealPath())->resize(150, 200)->save($destinationPath.'/'.$imgName);
+
+        return $imgName;
     }
 }

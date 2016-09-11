@@ -119,6 +119,9 @@
                             <li>
                                 <a href="/viewscheme">View Scheme</a>
                             </li>
+                            <li>
+                                <a href="/activity">Add Activity</a>
+                            </li>
                         </ul>
                     </li>
 

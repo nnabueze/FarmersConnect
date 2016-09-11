@@ -15,7 +15,7 @@
 				<div class="card">
 					<div class="header">
 						<h2>
-							SCHEME DETAILS
+							DEALER DETAILS
 						</h2>
 						<ul class="header-dropdown m-r--5">
 							<li class="dropdown">
@@ -33,68 +33,84 @@
 					<div class="body">
 						<table class="table table-bordered table-striped table-hover">
 
-							@if($scheme)
+							@if($dealer)
 
 							<tbody>
 								<tr>
-									<td><b>schemes ID</b></td>
-									<td>{{$scheme->key}}</td>
+									<td><b>Dealer ID</b></td>
+									<td>{{$dealer->key}}</td>
 								</tr>
 								<tr>
-									<td><b>Name of Scheme</b></td>
-									<td>{{ucwords($scheme->name_of_scheme)}}</td>
+									<td><b>Name of Company</b></td>
+									<td>{{ucwords($dealer->name_of_company)}}</td>
 								</tr>
 								<tr>
-									<td><b>Facilitator of Scheme</b></td>
-									<td>{{ucwords($scheme->facilitator_of_scheme)}}</td>
+									<td><b>Company Email</b></td>
+									<td>{{ucwords($dealer->company_email)}}</td>
 								</tr>
 								<tr>
-									<td><b>Discription of scheme</b></td>
-									<td>{{ucwords($scheme->discription_of_scheme)}}</td>
-								</tr>
-								<tr>
-									<td><b>Facilitator Name</b></td>
-									<td>{{$scheme->facilitator_name}}</td>
+									<td><b>Company Phone</b></td>
+									<td>{{ucwords($dealer->company_phone)}}</td>
 								</tr>
 								<tr>
 									<td><b>Address</b></td>
-									<td>{{ucwords($scheme->address)}}</td>
+									<td>{{$dealer->address}}</td>
 								</tr>
 								<tr>
-									<td><b>BVN</b></td>
-									<td>{{ucwords($scheme->bvn)}}</td>
+									<td><b>Website</b></td>
+									<td>{{ucwords($dealer->website)}}</td>
 								</tr>
 								<tr>
-									<td><b>TIN</b></td>
-									<td>{{ucwords($scheme->tin)}}</td>
+									<td><b>Contact Person</b></td>
+									<td>{{ucwords($dealer->contact_person)}}</td>
 								</tr>
 								<tr>
-									<td><b>Nature of Bussiness</b></td>
-									<td>{{ucwords($scheme->nature_of_bussiness)}}</td>
+									<td><b>Contact Phone</b></td>
+									<td>{{ucwords($dealer->person_phone)}}</td>
 								</tr>
 								<tr>
-									<td><b>Email</b></td>
-									<td>{{ucwords($scheme->email)}}</td>
+									<td><b>Contact Email</b></td>
+									<td>{{ucwords($dealer->person_email)}}</td>
 								</tr>
 								<tr>
-									<td><b>Phone</b></td>
-									<td>{{ucwords($scheme->phone)}}</td>
+									<td><b>Agricultural Expertise</b></td>
+									<td>{{ucwords($dealer->agricultural_expertise)}}</td>
 								</tr>
 								<tr>
-									<td><b>Objective of Scheme</b></td>
-									<td>{{ucwords($scheme->objective_of_scheme)}}</td>
+									<td><b>Years in bussiness</b></td>
+									<td>{{ucwords($dealer->years_in_business)}}</td>
 								</tr>
 								<tr>
-									<td><b>Partner of Scheme</b></td>
-									<td>{{ucwords($scheme->partners_of_scheme)}}</td>
+									<td><b>Similar Project</b></td>
+									<td>{{ucwords($dealer->similar_project)}}</td>
+								</tr>
+								<tr>
+									<td><b>References</b></td>
+									<td>{{ucwords($dealer->references)}}</td>
+								</tr>
+								<tr>
+									<td><b>Company Tin</b></td>
+									<td>{{ucwords($dealer->company_tin)}}</td>
+								</tr>								
+								<tr>
+									<td><b>Company BVN</b></td>
+									<td>{{ucwords($dealer->bvn)}}</td>
+								</tr>								
+								<tr>
+									<td><b>Company Account Number</b></td>
+									<td>{{ucwords($dealer->account_number)}}</td>
+								</tr>								
+								<tr>
+									<td><b>Company Account Name</b></td>
+									<td>{{ucwords($dealer->account_name)}}</td>
 								</tr>
 							</tbody>
 
 							@endif
 						</table>
-						<span><a href='{{URL::to('/viewscheme')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
+						<span><a href='{{URL::to('/viewdealer')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
 						<span class='pull-right'>
-							<form class="delete" action='/scheme/{{$scheme->id}}' method='POST'>
+							<form class="delete" action='/dealer/{{$dealer->id}}' method='POST'>
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<button type="submit" class="btn btn-default waves-effect">
@@ -109,7 +125,7 @@
 				<div class="card">
 					<div class="header">
 						<h2>
-							SCHEME IMAGES <small>Faciliatator picture and Scheme logo</small>
+							DEALER IMAGES <small>Faciliatator picture and dealer logo</small>
 						</h2>
 						<ul class="header-dropdown m-r--5">
 							<li>
@@ -133,12 +149,12 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td><b>Facilitator Picture</b></td>
-									<td><img src="{{asset('uploads/scheme/'.$scheme->image)}}" class="img-responsive"></td>
+									<td><b>Contact Person Picture</b></td>
+									<td><img src="{{asset('uploads/dealer/'.$dealer->image)}}" class="img-responsive"></td>
 								</tr>
 								<tr>
-									<td><b>Scheme Logo</b></td>
-									<td><img src="{{asset('uploads/logo/'.$scheme->logo)}}" class="img-responsive"></td>
+									<td><b>Dealer Logo</b></td>
+									<td><img src="{{asset('uploads/logo/'.$dealer->logo)}}" class="img-responsive"></td>
 								</tr>
 							</tbody>
 						</table>

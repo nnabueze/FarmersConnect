@@ -37,6 +37,7 @@ class SchemeRequest extends Request
         'nature_of_bussiness'=>'required|min:3',
         'email'=>'required|email',
         'phone'=>'required|numeric',
+        'activity'=>'required',
         ];
     }
 }

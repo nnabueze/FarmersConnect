@@ -24,4 +24,8 @@ class Scheme extends Model
     'partners_of_scheme',
     'image'
     ];
+
+    public function activities(){
+        return $this->belongsToMany('App\Activity');
+    }
 }

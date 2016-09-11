@@ -25,6 +25,8 @@ class Dealer extends Model
     'bvn',
     'account_number',
     'account_name',
-    'token'
+    'token',
+    'logo',
+    'image'
     ];
 }

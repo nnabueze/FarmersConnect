@@ -38,8 +38,8 @@ class DataSchemeController extends Controller
   public function anyData()
   {
       return Datatables::of(Scheme::query())->addColumn('action', function ($id) {
-          return '<a href="scheme/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-          <button class="btn-delete btn btn-default" data-remote="/scheme/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+          return '<a href="scheme/' . $id->key . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+          <button class="btn-delete btn btn-default" data-remote="/scheme/' . $id->key . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
       })->make(true);
   }
 }
