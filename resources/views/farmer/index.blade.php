@@ -37,7 +37,7 @@
 		                        	<th>Full Name</th>
 		                        	<th>Email</th>
 		                        	<th>Phone</th>
-		                        	<th>State</th>
+		                        	<th>Crop</th>
 		                        	<th>Action</th>
 		                        </tr>
 		                    </thead>
@@ -62,7 +62,7 @@ $(function() {
             { data: 'fullname', name: 'fullname' },
             { data: 'email', name: 'email' },
             { data: 'phone', name: 'phone' },
-            { data: 'state', name: 'state' },
+            {data: 'crop', name: 'crop'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });

@@ -10,7 +10,7 @@
         "bican/roles": "2.1.*",
         "fzaninotto/faker": "^1.6",
         "simplesoftwareio/simple-qrcode": "~1",
-        "yajra/laravel-datatables-oracle": "~6.0",
+        "yajra/laravel-datatables-oracle": "6.18.0",
         "intervention/image": "^2.3",
         "maatwebsite/excel": "~2.1.0"
     },

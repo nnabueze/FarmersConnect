@@ -21,7 +21,8 @@ class Farmer extends Model
     'used_before',
     'bank',
     'account_no',
-    'image'
+    'image',
+    'crop'
     ];
 //many to many relationship with crops
     public function crops(){

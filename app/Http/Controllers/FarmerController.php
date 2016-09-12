@@ -82,8 +82,8 @@ class FarmerController extends Controller
         $farmer = Farmer::create($request->all());
         //attaching crop to farmer
         if ($farmer) {
-         $farmer->crops()->attach($request->input('crop'));
-         $farmer->save();
+         /*$farmer->crops()->attach($request->input('crop'));
+         $farmer->save();*/
          Session::flash('message','Successful! You have created a farmer.');
          return view('farmer.card', compact('title','farmer'));  
         }

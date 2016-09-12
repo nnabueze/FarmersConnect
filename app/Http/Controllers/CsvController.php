@@ -43,9 +43,9 @@ class CsvController extends Controller
                         $row = $row->toArray();
                         $row['key'] = str_random(20);
                         $farmer = Farmer::create($row);
-                        $crop = Crop::where('crop',$row['crop'])->first();
+                    /*    $crop = Crop::where('crop',$row['crop'])->first();
                         $farmer->crops()->attach($crop->id);
-                        $farmer->save();
+                        $farmer->save();*/
                     });
 
                 });

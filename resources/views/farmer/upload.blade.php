@@ -8,7 +8,7 @@
 		
 	<!-- File Upload | Drag & Drop OR With Click & Choose -->
 	<div class="row clearfix">
-	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	    	@include('include.warning')
 	    	@include('include.message')
 	    	@include('include.error')
@@ -58,6 +58,41 @@
 
 	            </div>
 	        </div>
+	    </div>
+
+
+	    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-sm hidden-xs">
+	    	<div class="card">
+	    		<div class="header">
+	    			<h2>
+	    				Notice Board <small>Read the following instruction</small>
+	    			</h2>
+	    			<ul class="header-dropdown m-r--5">
+	    				<li>
+	    					<a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse">
+	    						<i class="material-icons">loop</i>
+	    					</a>
+	    				</li>
+	    				<li class="dropdown">
+	    					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	    						<i class="material-icons">more_vert</i>
+	    					</a>
+	    					<ul class="dropdown-menu pull-right">
+	    						<li><a href="javascript:void(0);">Action</a></li>
+	    						<li><a href="javascript:void(0);">Another action</a></li>
+	    						<li><a href="javascript:void(0);">Something else here</a></li>
+	    					</ul>
+	    				</li>
+	    			</ul>
+	    		</div>
+	    		<div class="body">
+	    			<p><em>Please adhere to the following instruction to aviod error</em></p>
+	    			<ul style="list-style-type:square">
+	    			  <li><em>Make sure all column are filled and not null</em></li>
+	    			  <li><em>CSV column heads are in the same format with database check for sample</em></li>
+	    			</ul>
+	    		</div>
+	    	</div><!-- End of second row -->
 	    </div>
 	</div>
 	<!-- #END# File Upload | Drag & Drop OR With Click & Choose -->

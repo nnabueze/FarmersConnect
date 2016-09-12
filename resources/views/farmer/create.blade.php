@@ -135,10 +135,11 @@
 		    	                </div>
 		    	                <div class="form-group form-float">
 		    	                	<label class="form-label">Crop*</label>
-		    	                   <select name='crop[]' class="form-control show-tick" multiple>
-		    	                       @if($crops)
+		    	                   <select name='crop' class="form-control show-tick">
+		    	                       @if($crops->count() > 0)
+		    	                       <option value=''>Select Crop</option>
 		    	                       		@foreach($crops as $crop)
-		    	                       		<option value='{{$crop->id}}'>{{ucwords($crop->crop)}}</option>
+		    	                       		<option value='{{$crop->crop}}'>{{ucwords($crop->crop)}}</option>
 		    	                       		@endforeach()
 		    	                       @else
 		    	                       <option value=''>No Crop</option>

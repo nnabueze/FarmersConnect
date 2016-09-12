@@ -23,6 +23,7 @@ class CreateFarmersMigration extends Migration
             $table->string('lga');
             $table->string('village');
             $table->string('farm_size');
+            $table->string('crop');
             $table->string('no_of_pack');
             $table->enum('used_before', ['y', 'n']);
             $table->string('bank')->nullable();
