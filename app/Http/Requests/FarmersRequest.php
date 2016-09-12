@@ -26,7 +26,6 @@ class FarmersRequest extends Request
         return [
             //
         'fullname'=>'required|min:3',
-        'email'=>'required|email',
         'phone'=>'required|numeric',
         'gender'=>'required',
         'state'=>'required',

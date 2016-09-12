@@ -66,9 +66,9 @@ class FarmerController extends Controller
         }
 
         //check if email exist
-        $emailCheck = $this->emailCheck($request);
-        if ($emailCheck) {
-            Session::flash('warning','Failed! Email already exist');
+        $phoneCheck = $this->phoneCheck($request);
+        if ($phoneCheck) {
+            Session::flash('warning','Failed! Farmer already exist');
             return Redirect::back();
         }
 
@@ -159,10 +159,10 @@ class FarmerController extends Controller
     }
 
     //checking email
-    public function emailCheck($request)
+    public function phoneCheck($request)
     {
-        $email = Farmer::where('email',$request->input('email'))->first();
-        if ($email) {
+        $phone = Farmer::where('phone',$request->input('phone'))->orWhere('fullname', $request->input('fullname'))->first();
+        if ($phone) {
             return TRUE;
         }else{
             return FALSE;

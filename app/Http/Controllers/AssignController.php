@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Farmer;
+use App\Scheme;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
@@ -26,8 +27,9 @@ class AssignController extends Controller
      */
     public function getIndex()
     {
+        $schemes = Scheme::all();
     	$title = "Farmers Connect: Farmers Page";
-        return view('farmer.assign',compact('title'));
+        return view('farmer.assign',compact('title','schemes'));
     }
 
     /**

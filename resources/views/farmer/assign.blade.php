@@ -11,7 +11,11 @@
 
 		<!-- Exportable Table -->
 		<div class="row clearfix">
-		    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<form action='assign' method='POST'>
+		    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		    	@include('include.warning')
+		    	@include('include.message')
+		    	@include('include.error')
 		        <div class="card">
 		            <div class="header">
 		                <h2>
@@ -31,7 +35,7 @@
 		                </ul>
 		            </div>
 		            <div class="body">
-		            	<form action='assign' method='POST'>
+		            	
 		            		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                <table class="table table-bordered table-striped table-hover" id="users-table1">
 		                    <thead>
@@ -47,19 +51,58 @@
 		                        </tr>
 		                    </thead>
 		                </table>
-		                <br />
-		                <div class="form-group">
-		                	<select name='role' class="form-control show-tick">
-		                		<option value=''>Select Scheme</option>
-		                	    <option value=''></option>
-		                	</select>
-		                </div>
-		                <button type="submit" class="btn btn-warning pull-right waves-effect">ASSIGN SCHEME</button>
-		                <br />
-		            	</form>
+
 		            </div>
 		        </div>
 		    </div>
+
+
+
+		    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		    	<div class="card">
+		    		<div class="header">
+		    			<h2>
+		    				Select Scheme <small>You can mass assign Farmers to scheme</small>
+		    			</h2>
+		    			<ul class="header-dropdown m-r--5">
+		    				<li>
+		    					<a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse">
+		    						<i class="material-icons">loop</i>
+		    					</a>
+		    				</li>
+		    				<li class="dropdown">
+		    					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		    						<i class="material-icons">more_vert</i>
+		    					</a>
+		    					<ul class="dropdown-menu pull-right">
+		    						<li><a href="javascript:void(0);">Action</a></li>
+		    						<li><a href="javascript:void(0);">Another action</a></li>
+		    						<li><a href="javascript:void(0);">Something else here</a></li>
+		    					</ul>
+		    				</li>
+		    			</ul>
+		    		</div>
+		    		<div class="body">
+		    			    <div class="form-group">
+		    			    	<select name='scheme' class="form-control show-tick">
+		    			    		<option value=''>Select Scheme</option>
+		    			    		@if($schemes)
+		    			    			@foreach($schemes as $scheme)
+		    			    	    <option value='{{$scheme->id}}'>{{$scheme->name_of_scheme}}</option>
+		    			    	    	@endforeach
+		    			    	    @else
+		    			    	    <option value=''>No Scheme</option>
+		    			    	    @endif
+		    			    	</select>
+		    			    </div>
+		    			    <button type="submit" class="btn btn-warning pull-right waves-effect">ASSIGN SCHEME</button>
+		    			    <br />
+		    				
+		    		</div>
+		    	</div><!-- End of second row -->
+		    </div>
+		    <!-- #END# Bordered Table -->
+		    </form>
 		</div>
 		<!-- #END# Exportable Table -->
 	</div>

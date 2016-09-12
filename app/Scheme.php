@@ -25,7 +25,13 @@ class Scheme extends Model
     'image'
     ];
 
+//many to many relationship with activity
     public function activities(){
         return $this->belongsToMany('App\Activity');
+    }
+
+//many to many relationship with farmer
+    public function farmers(){
+        return $this->belongsToMany('App\Farmer');
     }
 }
