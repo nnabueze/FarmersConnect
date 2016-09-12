@@ -47,6 +47,7 @@ Route::controller('assigndealer', 'AssignDealerController', [
     'anyData'  => 'assigndealer.data',
     'getIndex' => 'assigndealer',
 ]);
+Route::post('assigndealer','DashboardController@assignDealer');
 //view scheme
 Route::controller('viewscheme', 'DataSchemeController', [
     'anyData'  => 'viewscheme.data',

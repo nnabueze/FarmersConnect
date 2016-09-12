@@ -28,7 +28,7 @@ class WorkerRequest extends Request
         'first_name'=>'required|min:3',
         'middle_name'=>'required|min:3',
         'last_name'=>'required|min:3',
-        'date_of_birth'=>'required|date_format:Y-m-d',
+        'date_of_birth'=>'required|date_format:Y/m/d',
         'gender'=>'required',
         'email'=>'required|email',
         'phone'=>'required|numeric',
@@ -39,5 +39,10 @@ class WorkerRequest extends Request
         'account_name'=>'required'
         ];
 
+    }
+
+    //many to many relationship with worker
+    public function schemes(){
+        return $this->belongsToMany('App\Scheme');
     }
 }

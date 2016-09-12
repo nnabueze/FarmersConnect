@@ -34,4 +34,15 @@ class Scheme extends Model
     public function farmers(){
         return $this->belongsToMany('App\Farmer');
     }
+
+//many to many relationship with worker
+    public function workers(){
+        return $this->belongsToMany('App\Worker');
+    }
+
+//many to many relationship with dealer
+    public function dealers(){
+        return $this->belongsToMany('App\Dealer');
+    }
+
 }

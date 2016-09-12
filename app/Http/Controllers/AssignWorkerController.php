@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Scheme;
 use App\Worker;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -26,8 +27,9 @@ class AssignWorkerController extends Controller
      */
     public function getIndex()
     {
+        $schemes = Scheme::all();
     	$title = "Farmers Connect: Workers Page";
-        return view('worker.assign',compact('title'));
+        return view('worker.assign',compact('title','schemes'));
     }
 
     /**
@@ -37,7 +39,7 @@ class AssignWorkerController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Worker::query())->addColumn('action', function ($id) {
+        return Datatables::of(Worker::where('status','active')->get())->addColumn('action', function ($id) {
             return '<input type="checkbox" name="box[]" value="'.$id->id.'" id="remember_me_'.$id->id.'">
                                         <label for="remember_me_'.$id->id.'"></label>'; 
         })->make(true);

@@ -29,4 +29,14 @@ class Dealer extends Model
     'logo',
     'image'
     ];
+
+    //many to many relationship with scheme
+        public function schemes(){
+            return $this->belongsToMany('App\Scheme');
+        }
+
+    //many to many relationship with activity
+        public function activities(){
+            return $this->belongsToMany('App\Activity');
+        }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Scheme;
 use App\Dealer;
+use App\Activity;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
@@ -27,7 +29,9 @@ class AssignDealerController extends Controller
     public function getIndex()
     {
     	$title = "Farmers Connect: Dealers Page";
-        return view('dealer.assign',compact('title'));
+        $schemes = Scheme::all();
+        $activities = Activity::all();
+        return view('dealer.assign',compact('title','schemes','activities'));
     }
 
     /**
@@ -37,7 +41,7 @@ class AssignDealerController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Dealer::query())->addColumn('action', function ($id) {
+        return Datatables::of(Dealer::where('status','active')->get())->addColumn('action', function ($id) {
             return '<input type="checkbox" name="box[]" value="'.$id->id.'" id="remember_me_'.$id->id.'">
                                         <label for="remember_me_'.$id->id.'"></label>'; 
         })->make(true);

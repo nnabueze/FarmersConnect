@@ -11,9 +11,12 @@
 
 		<!-- Exportable Table -->
 		<div class="row clearfix">
-
+			<form action='workerassign' method='POST'>
 
 		    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		    	@include('include.warning')
+		    	@include('include.message')
+		    	@include('include.error')
 		        <div class="card">
 		            <div class="header">
 		                <h2>
@@ -33,7 +36,7 @@
 		                </ul>
 		            </div>
 		            <div class="body">
-		            	<form action='workerassign' method='POST'>
+		            	
 		            		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                <table class="table table-bordered table-striped table-hover" id="users-table1">
 		                    <thead>
@@ -84,18 +87,25 @@
 		    		</div>
 		    		<div class="body">
 		    			    <div class="form-group">
-		    			    	<select name='role' class="form-control show-tick">
+		    			    	<select name='scheme' class="form-control show-tick">
+		    			    		@if($schemes->count() > 0)
 		    			    		<option value=''>Select Scheme</option>
-		    			    	    <option value=''></option>
+		    			    		@foreach($schemes as $scheme)
+		    			    		<option value='{{$scheme->id}}'>{{$scheme->name_of_scheme}}</option>
+		    			    		@endforeach
+		    			    		@else
+		    			    	    <option value=''>NO SCHEME</option>
+		    			    	    @endif
 		    			    	</select>
 		    			    </div>
 		    			    <button type="submit" class="btn btn-warning pull-right waves-effect">ASSIGN SCHEME</button>
 		    			    <br />
-		    				</form>
+		    				
 		    		</div>
 		    	</div><!-- End of second row -->
 		    </div>
 		    <!-- #END# Bordered Table -->
+		    </form>
 		</div>
 		<!-- #END# Exportable Table -->
 	</div>

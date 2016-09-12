@@ -12,6 +12,9 @@
 		<!-- Exportable Table -->
 		<div class="row clearfix">
 		    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		    	@include('include.message')
+		    	@include('include.warning')
+		    	@include('include.error')
 		        <div class="card">
 		            <div class="header">
 		                <h2>
@@ -120,8 +123,16 @@
 		                    
 		                    @endif
 		                </table>
-		                <span><a class='btn btn-default'>BACK</a></span>
-		                <span class='pull-right'><a class='btn btn-default'>EDIT</a>|<a class='btn btn-default'>DELETE</a></span>
+		                <span><a href='{{URL::to('/work')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
+		                <span class='pull-right'>
+		                	<form class="delete" action='/worker/{{$worker->id}}' method='POST'>
+		                		<input type="hidden" name="_method" value="DELETE">
+		                		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                		<button type="submit" class="btn btn-default waves-effect">
+		                		    DELETE</span>
+		                		</button>
+		                	</form>
+		                </span>
 		            </div>
 		        </div>
 		    </div>

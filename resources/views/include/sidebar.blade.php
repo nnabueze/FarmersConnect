@@ -89,7 +89,7 @@
                                 <a href="/work">View Worker</a>
                             </li>
                             <li>
-                                <a href="/assignworker">Assign Worker</a>
+                                <a href="/assignworker">Assign Activated Worker</a>
                             </li>
                         </ul>
                     </li>

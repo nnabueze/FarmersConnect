@@ -158,7 +158,7 @@ class DealerController extends Controller
             $user->delete($user->id);
 
             Session::flash('message','Successful! You have deleted a Dealer');
-            return Redirect::to('/viewscheme');
+            return Redirect::to('/viewdealer');
         }
         Session::flash('warning','Failed! Unable to delete Dealer');
         return Redirect::back();

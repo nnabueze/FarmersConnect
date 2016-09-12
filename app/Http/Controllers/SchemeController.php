@@ -203,7 +203,8 @@ class SchemeController extends Controller
         $user = User::create([
             'name' => $request->input('name_of_scheme'),
             'email'=> $request->input('email'),
-            'password' => $password_hash
+            'password' => $password_hash,
+            'status'=>'active'
             ]);
     //attaching role to user
         if ($user) {

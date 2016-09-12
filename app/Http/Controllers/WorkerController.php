@@ -12,6 +12,7 @@ use Session;
 use App\User;
 use App\Worker;
 use App\Farmer;
+use App\Scheme;
 use App\Http\Requests;
 use App\Http\Requests\WorkerRequest;
 use Bican\Roles\Models\Role;
@@ -143,8 +144,22 @@ class WorkerController extends Controller
     public function destroy($id)
     {
         //
-        echo "delete method";
-        die;
+ //
+         $worker = Worker::where('id',$id)->first();
+         if ($worker) {
+             //File::delete(public_path().'/uploads/logo/'.$worker->logo,public_path().'/uploads/worker/'.$worker->image);
+             /*unlink(public_path().'/uploads/logo'.$worker->logo);
+             unlink(public_path().'/uploads/worker'.$worker->image);*/
+             $worker->delete($id);
+
+             $user = User::where('email',$worker->email)->first();
+             $user->delete($user->id);
+
+             Session::flash('message','Successful! You have deleted a Scheme');
+             return Redirect::to('/work');
+         }
+         Session::flash('warning','Failed! Unable to delete Scheme');
+         return Redirect::back();
     }
 
     //inserting into user table
