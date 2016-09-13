@@ -47,12 +47,15 @@ class BillingController extends Controller
         $dealer = Dealer::where('id',$request->input('id'))->where('status','active')->first();
         if ($dealer) {
 
+            $check_billing = Dealer::where('id',$request->input('id'))->where('assign',1)->where('status','active')->first();
+            if ($check_billing) {
+                Session::flash('mistake','Error! You have submitted price brfore');
+                return Redirect::back();
+            }
             $billing = Billing::create($request->all());
             $dealer->billings()->save($billing);
-
-            $dealer->update([
-                'assign' => 1
-                ]);
+            $dealer->assign = 1;
+            $dealer->save();
             
             Session::flash('message','Price details received, will get intouch with you.');
             return Redirect::back();
