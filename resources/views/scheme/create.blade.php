@@ -61,7 +61,7 @@
 		    	                <div class="form-group form-float">
 		    	                	<label class="form-label">Select Activity*</label>
 		    	                   <select name='activity[]' class="form-control show-tick" multiple >
-		    	                       @if($activities)
+		    	                       @if(count($activities) > 0)
 		    	                       	@foreach($activities as $activity)
 		    	                       <option value='{{$activity->id}}'>{{$activity->name}}</option>
 		    	                       @endforeach

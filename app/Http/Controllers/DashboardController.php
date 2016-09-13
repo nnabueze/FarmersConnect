@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Hash;
+use Mail;
 use Session;
 use Redirect;
 use App\Scheme;
+use App\Worker;
 use App\User;
 use App\Dealer;
 use App\Http\Requests;
@@ -19,7 +21,7 @@ class DashboardController extends Controller
 	{
 
 		$this->middleware('auth', ['except' => [
-		     'logout'
+		     'logout','billing'
 		 ]]);
 
 	}
@@ -71,17 +73,27 @@ class DashboardController extends Controller
 /*        echo "<pre>";
         print_r(count($request->input('box')));
         die;*/
-        $scheme = Scheme::where('id',$request->input('scheme'))->first();
+        
         if (count($request->input('box')) < 1) {
 
             Session::flash('warning','Failed! Select workers to assign');
             return Redirect::back();
         }
+
+        $scheme = Scheme::where('id',$request->input('scheme'))->first();
         if ($scheme) {
             # code...
-            //attach farmer
-            $scheme->workers()->attach($request->input('box'));
-            $scheme->save();
+            //attach worker
+            /*$scheme->workers()->attach($request->input('box'));
+            $scheme->save();*/
+            foreach($request->input('box') as $value){
+                $worker = Worker::where('id',$value)->first();
+
+                $worker->update([
+                    'assign'=>1,
+                    'scheme_id'=>$scheme->id
+                    ]);
+            }
 
             Session::flash('message','Successful! You have assaigned workers to scheme');
             return Redirect::back();
@@ -89,6 +101,7 @@ class DashboardController extends Controller
         Session::flash('warning','Failed! Unable to assaign workers to scheme');
         return Redirect::back();
     }
+
     //assign dealer
     public function assignDealer(Request $request)
     {
@@ -102,6 +115,12 @@ class DashboardController extends Controller
             Session::flash('warning','Failed! Select workers to assign');
             return Redirect::back();
         }
+
+        //check if activity is selected
+        if (count($request->input('activity')) < 1 && empty($request->input('activity'))) {
+            Session::flash('warning','Failed! Select activity to assign');
+            return Redirect::back();
+        }
         if ($scheme) {
             //check if activity is in line with scheme activity
             $checkActivity = $this->checkActivity($scheme, $request);
@@ -110,12 +129,12 @@ class DashboardController extends Controller
                 return Redirect::back();
             }
 
-            //attach activity to dealer
-            $this->attachActivity($request);
-
             //attach dealer
             $scheme->dealers()->attach($request->input('box'));
             $scheme->save();
+
+            //attach activity to dealer
+            $this->attachActivity($request, $scheme);
 
             Session::flash('message','Successful! You have assaigned dealers to scheme');
             return Redirect::back();
@@ -123,6 +142,18 @@ class DashboardController extends Controller
         Session::flash('warning','Failed! Unable to assaign dealers to scheme');
         return Redirect::back();
 
+    }
+
+    //Displaying biling form for dealers
+    public function billing($id)
+    {
+        $dealer = Dealer::where('key',$id)->first();
+        if ($dealer) {
+
+            return view('billing.index',compact('dealer'));
+        }
+        Session::flash('mistake','Error! 400 erorr occured');
+        return view('billing.index');
     }
 
     //logout from the system
@@ -139,6 +170,7 @@ class DashboardController extends Controller
     //checking if activity is equal to scheme activity
     private function checkActivity($scheme, $request)
     {
+
         $scheme_activity = array();
         $activities = $scheme->activities->toArray();
 
@@ -158,7 +190,7 @@ class DashboardController extends Controller
     }
 
     //attaching activity to each dealer
-    private function attachActivity($request)
+    private function attachActivity($request, $scheme)
     {
 /*        echo "<pre>";
         print_r($request->input('box'));
@@ -167,6 +199,17 @@ class DashboardController extends Controller
           $dealer = Dealer::find($value);
           $dealer->activities()->attach($request->input('activity'));
           $dealer->save();
+
+          //send billing email to dealer
+          $this->sendMail($dealer, $scheme);
         }
+    }
+
+    //send email to worker
+    private function sendMail($register, $scheme) {
+        Mail::send('email.billing', ['dealer' => $register, 'scheme'=>$scheme], function ($m) use ($register) {
+            $m->from('oparannabueze@gmail.com', 'Farmers Connect Billing Information');
+            $m->to($register->company_email, $register->name_of_company)->subject('Farmers Connect Billing Information!');
+        });
     }
 }

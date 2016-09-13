@@ -36,8 +36,12 @@ class Scheme extends Model
     }
 
 //many to many relationship with worker
-    public function workers(){
+/*    public function workers(){
         return $this->belongsToMany('App\Worker');
+    }*/
+    public function workers()
+    {
+      return $this->hasMany('App\Worker');
     }
 
 //many to many relationship with dealer

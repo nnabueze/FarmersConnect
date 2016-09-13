@@ -89,12 +89,12 @@
 		    			    <div class="form-group">
 		    			    	<select name='scheme' class="form-control show-tick">
 		    			    		@if($schemes->count() > 0)
-		    			    		<option value=''>Select Scheme</option>
+		    			    		<option >Select Scheme</option>
 		    			    		@foreach($schemes as $scheme)
 		    			    		<option value='{{$scheme->id}}'>{{$scheme->name_of_scheme}}</option>
 		    			    		@endforeach
 		    			    		@else
-		    			    	    <option value=''>NO SCHEME</option>
+		    			    	    <option >NO SCHEME</option>
 		    			    	    @endif
 		    			    	</select>
 		    			    </div>

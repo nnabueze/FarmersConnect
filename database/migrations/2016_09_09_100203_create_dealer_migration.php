@@ -34,6 +34,7 @@ class CreateDealerMigration extends Migration
             $table->string('logo');
             $table->string('image');
             $table->enum('status', ['pending', 'active','suspend']);
+            $table->enum('assign', [0, 1]);
             $table->string('token');
             $table->timestamps();
         });

@@ -41,7 +41,7 @@ class AssignDealerController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Dealer::where('status','active')->get())->addColumn('action', function ($id) {
+        return Datatables::of(Dealer::where('status','active')->where('assign',0)->get())->addColumn('action', function ($id) {
             return '<input type="checkbox" name="box[]" value="'.$id->id.'" id="remember_me_'.$id->id.'">
                                         <label for="remember_me_'.$id->id.'"></label>'; 
         })->make(true);

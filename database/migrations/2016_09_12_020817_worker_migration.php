@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkerMigration extends Migration
+class WorkerMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,8 @@ class CreateWorkerMigration extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('scheme_id')->unsigned()->index()->nullable();
+            $table->foreign('scheme_id')->references('id')->on('schemes')->onDelete('cascade');
             $table->string('key');
             $table->string('first_name');
             $table->string('middle_name');
@@ -35,7 +37,9 @@ class CreateWorkerMigration extends Migration
             $table->string('account_name');
             $table->string('token');
             $table->enum('status', ['pending', 'active','suspend']);
+            $table->enum('assign', [0, 1]);
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 

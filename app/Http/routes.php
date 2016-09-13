@@ -36,6 +36,10 @@ Route::controller('assignworker', 'AssignWorkerController', [
     'anyData'  => 'assignworker.data',
     'getIndex' => 'assignworker',
 ]);
+Route::controller('approvedworker', 'ApprovedWorkerController', [
+    'anyData'  => 'approvedworker.data',
+    'getIndex' => 'approvedworker',
+]);
 Route::post('workerassign','DashboardController@assignWorker');
 
 //Route for viewing dealer and assigning
@@ -47,6 +51,9 @@ Route::controller('assigndealer', 'AssignDealerController', [
     'anyData'  => 'assigndealer.data',
     'getIndex' => 'assigndealer',
 ]);
+//Dealer billing information
+//Route::get('billing/{any}','DashboardController@billing');
+Route::get('billing/{token}',['as'=>'billing','uses'=>'DashboardController@billing']);
 Route::post('assigndealer','DashboardController@assignDealer');
 //view scheme
 Route::controller('viewscheme', 'DataSchemeController', [
@@ -89,4 +96,6 @@ Route::resource('/scheme','SchemeController');
 //////////////////////////////////////////////////////////
 //activity
 Route::resource('/activity','ActivityController');
+//Dealer billing email
+Route::resource('/billing','BillingController');
 

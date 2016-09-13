@@ -85,11 +85,16 @@
                             <span>Extension Worker</span>
                         </a>
                         <ul class="ml-menu">
+                            @role('superadmin')
                             <li>
                                 <a href="/work">View Worker</a>
                             </li>
+                            @endrole
                             <li>
-                                <a href="/assignworker">Assign Activated Worker</a>
+                                <a href="/assignworker">Approved Worker</a>
+                            </li>
+                            <li>
+                                <a href="/approvedworker">Assigned Worker</a>
                             </li>
                         </ul>
                     </li>
@@ -105,6 +110,9 @@
                             </li>
                             <li>
                                 <a href="/assigndealer">Assign Dealer</a>
+                            </li>
+                            <li>
+                                <a href="#">Approved Dealer</a>
                             </li>
                         </ul>
                     </li>

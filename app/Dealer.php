@@ -39,4 +39,10 @@ class Dealer extends Model
         public function activities(){
             return $this->belongsToMany('App\Activity');
         }
+
+    //one to many relation with billing
+        public function billings()
+        {
+          return $this->hasMany('App\Billing');
+        }
 }

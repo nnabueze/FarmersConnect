@@ -31,6 +31,14 @@ class Worker extends Model
     	'account_number',
     	'account_name',
     	'key',
-        'token'
+        'token',
+        'assign',
+        'scheme_id'
     ];
+
+    //one to many relation with schem
+    public function scheme()
+    {
+      return $this->belongsTo('App\Scheme');
+    }
 }

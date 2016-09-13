@@ -102,12 +102,12 @@
 		    			    	<label>Select Activity</label>
 		    			    	<select name='activity[]' class="form-control show-tick" multiple>
 		    			    		@if($activities->count() > 0)
-		    			    		<option value=''>Select Activity</option>
+		    			    		<option >Select Activity</option>
 		    			    			@foreach($activities as $activity)
 		    			    			<option value='{{$activity->id}}'>{{$activity->name}}</option>
 		    			    			@endforeach
 		    			    		@else
-		    			    	    <option value=''>NO Activity</option>
+		    			    	    <option >NO Activity</option>
 		    			    	    @endif
 		    			    	</select>
 		    			    </div>
