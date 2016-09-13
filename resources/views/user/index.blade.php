@@ -60,6 +60,7 @@
 									@endforeach
 									</td>
 									<td style="width:18%">
+										@level(4)
 										<span class='pull-left'>
 											<!-- <a href='#' class='btn btn-default sm-btn' role='button'><span class="glyphicon glyphicon-edit"></span> </a> -->
 											@if($user['status'] == 'pending')
@@ -93,6 +94,7 @@
 											</form>
 											@endif
 										</span>
+										@endlevel
 										<span class='pull-right'>
 										<form class="delete" action='/users/{{$user->id}}' method='POST'>
 											<input type="hidden" name="_method" value="DELETE">

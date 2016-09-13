@@ -55,6 +55,7 @@
                         </ul>
                     </li>
                     @endrole
+                    @role('admin|superadmin|worker|scheme')
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
@@ -78,18 +79,20 @@
                             </li>
                         </ul>
                     </li>
+                     @endrole
 
+                     @role('admin|superadmin|scheme')
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">perm_media</i>
                             <span>Extension Worker</span>
                         </a>
                         <ul class="ml-menu">
-                            @role('superadmin')
+                            @level(4)
                             <li>
                                 <a href="/work">View Worker</a>
                             </li>
-                            @endrole
+                            @endlevel
                             <li>
                                 <a href="/assignworker">Approved Worker</a>
                             </li>
@@ -98,24 +101,32 @@
                             </li>
                         </ul>
                     </li>
-                    
+                    @endrole
+
+                    @role('admin|superadmin|scheme')
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
                             <span>Agro Dealers</span>
                         </a>
                         <ul class="ml-menu">
+                            @level(4)
                             <li>
                                 <a href="/viewdealer">View Dealer</a>
                             </li>
+                            @endlevel
                             <li>
                                 <a href="/assigndealer">Assign Dealer</a>
                             </li>
                             <li>
-                                <a href="#">Approved Dealer</a>
+                                <a href="/approveddealer">Approved Dealer</a>
                             </li>
                         </ul>
                     </li>
+                    @endrole
+
+                    @role('admin|superadmin')
+                    <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">widgets</i>
                         <span>Scheme</span>
@@ -132,7 +143,8 @@
                             </li>
                         </ul>
                     </li>
-
+                    @endrole
+                    @role('admin|superadmin|worker|dealer|scheme')
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">content_copy</i>
@@ -147,7 +159,8 @@
                             </li>
                         </ul>
                     </li>
-
+                    @endrole
+                    @role('admin|superadmin|worker|dealer|scheme')
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
@@ -159,6 +172,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endrole
                     <li>
                         <a href="/admin/logout">
                             <i class="material-icons">layers</i>

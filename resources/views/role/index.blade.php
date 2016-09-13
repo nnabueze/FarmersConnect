@@ -61,6 +61,7 @@
 										<span class='pull-left'>
 											<a href='#' class='btn btn-default sm-btn' role='button'><span class="glyphicon glyphicon-edit"></span> </a>
 										</span>
+										@level(4)
 										<span class='pull-right'>
 										<form class="delete" action='/role/{{$role->id}}' method='POST'>
 											<input type="hidden" name="_method" value="DELETE">
@@ -70,6 +71,7 @@
 											</button>
 										</form>
 										</span>
+										@endlevel
 									</td>
 								</tr>
 									<?php $i++;?>
@@ -136,8 +138,10 @@
 								    <option value='1'>1</option>
 								    <option value='2'>2</option>
 								    <option value='3'>3</option>
+								    @level(4)
 								    <option value='4'>4</option>
 								    <option value='5'>5</option>
+								    @endlevel
 								</select>
 							</div>
 							@endlevel
