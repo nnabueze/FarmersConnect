@@ -63,8 +63,6 @@ class SchemeController extends Controller
     public function store(SchemeRequest $request)
     {
         //
-
-
         //check if email
         $check_scheme = Scheme::where('email',$request->input('email'))->first();
         if ($check_scheme) {
@@ -90,6 +88,12 @@ class SchemeController extends Controller
         $user = $this->insertUser($request, $password_hash);
 
         if ($user) {
+           //add one to many relationship between scheme and user
+           //$scheme->users()->save($user);
+
+            $user->scheme_id = $scheme->id;
+            $user->save();
+
            $this->sendMail($scheme, $password);
            Session::flash('message','Successful! You have created a Scheme');
            return Redirect::back();
@@ -211,7 +215,7 @@ class SchemeController extends Controller
             $role = Role::where('slug','scheme')->first();
             $user->attachRole($role->id);
 
-            return true;
+            return $user;
         }
         return false;
     }

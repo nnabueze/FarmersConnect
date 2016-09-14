@@ -69,7 +69,7 @@
                                 <a href="/farmers">View Farmers</a>
                             </li>
                             <li>
-                                <a href="csv">Upload Farmers</a>
+                                <a href="/csv">Upload Farmers</a>
                             </li>
                             <li>
                                 <a href="/assign">Assign Farmers</a>

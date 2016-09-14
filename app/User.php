@@ -43,4 +43,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsToMany('Bican\Roles\Models\Role');
     }
+
+    //one to many relationship with scheme model
+    public function scheme()
+     {
+         return $this->belongsTo('App\Scheme');
+     }
 }

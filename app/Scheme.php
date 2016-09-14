@@ -49,4 +49,10 @@ class Scheme extends Model
         return $this->belongsToMany('App\Dealer');
     }
 
+//One to many relation with user model
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
 }
