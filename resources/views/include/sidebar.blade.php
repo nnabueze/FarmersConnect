@@ -65,9 +65,11 @@
                             <li>
                                 <a href="/farmers/create">Register Farmers</a>
                             </li>
+                            @level(4)
                             <li>
                                 <a href="/farmers">View Farmers</a>
                             </li>
+                            @endlevel
                             <li>
                                 <a href="/csv">Upload Farmers</a>
                             </li>

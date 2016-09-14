@@ -61,10 +61,10 @@ class AdminController extends Controller
                 Session::flash('warning', 'Account not activated');           
                 return Redirect::to('admin/logout');
             }
-            if (Auth::user()->level() < 3) {
+/*            if (Auth::user()->level() < 3) {
                 Session::flash('warning', 'Account not activated');           
                 return Redirect::to('admin/logout');
-            }
+            }*/
             return redirect()->intended('admin/dashboard');
         } else {
             Session::flash('warning', 'Invalid login credentials');           
