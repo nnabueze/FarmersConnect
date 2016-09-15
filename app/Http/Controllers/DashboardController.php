@@ -129,9 +129,8 @@ class DashboardController extends Controller
                 return Redirect::back();
             }
 
-            //attach dealer
-            $scheme->dealers()->attach($request->input('box'));
-            $scheme->save();
+            //check if dealer has been assigned before, if no
+            $this->check_dealer_scheme($request, $scheme);
 
             //attach activity to dealer
             $this->attachActivity($request, $scheme);
@@ -183,6 +182,7 @@ class DashboardController extends Controller
         foreach($request->input('activity') as $check){
 
             if (in_array($check, $scheme_activity)) {
+
                return true;
             }
         }
@@ -200,6 +200,9 @@ class DashboardController extends Controller
           $dealer->activities()->attach($request->input('activity'));
           $dealer->save();
 
+            $dealer->assign = 1;
+             $dealer->save();
+        
           //send billing email to dealer
           $this->sendMail($dealer, $scheme);
         }
@@ -234,6 +237,33 @@ class DashboardController extends Controller
               $farmer = Farmer::find($value);
               $farmer->assign = 1;
               $farmer->save();
+            }
+        }
+    }
+
+    //check if dealer is already assigned to scheme
+    private function check_dealer_scheme($request, $scheme)
+    {
+        $scheme_array = array();
+        $schemeArray = $scheme->dealers->toArray();
+
+        foreach ($schemeArray  as $value) {
+
+            //$scheme_activity[] = $value['id'];
+            array_push($scheme_array, $value['id']);
+        }
+        foreach ($request->input('box') as $value) {
+
+            if ( ! in_array($value, $scheme_array)) {
+ 
+                 //attach dealer
+                 $scheme->dealers()->attach($request->input('box'));
+                 $scheme->save();
+
+              //updating farmers assign colum
+              $dealer = Dealer::find($value);
+              $dealer->assign = 1;
+              $dealer->save();
             }
         }
     }

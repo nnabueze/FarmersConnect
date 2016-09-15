@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Scheme;
+use Auth;
 use App\Dealer;
 use App\Activity;
 use App\Http\Requests;
@@ -28,8 +29,14 @@ class AssignDealerController extends Controller
      */
     public function getIndex()
     {
+        $scheme_id = Auth::user()->scheme_id;
+
+        if ( ! empty($scheme_id)) {
+            $schemes = Scheme::where('id',$scheme_id)->get();
+        }else{
+            $schemes = Scheme::all();
+        }
     	$title = "Farmers Connect: Dealers Page";
-        $schemes = Scheme::all();
         $activities = Activity::all();
         return view('dealer.assign',compact('title','schemes','activities'));
     }

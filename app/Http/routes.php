@@ -67,6 +67,10 @@ Route::controller('approveddealer', 'ApprovedDealerController', [
     'anyData'  => 'approveddealer.data',
     'getIndex' => 'approveddealer',
 ]);
+Route::controller('schemedealer', 'SchemeDealerController', [
+    'anyData'  => 'schemedealer.data',
+    'getIndex' => 'schemedealer',
+]);
 //Dealer billing information
 Route::get('billing/{token}',['as'=>'billing','uses'=>'DashboardController@billing']);
 Route::post('assigndealer','DashboardController@assignDealer');
