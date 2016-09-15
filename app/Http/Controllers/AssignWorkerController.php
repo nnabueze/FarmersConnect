@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Scheme;
+use Auth;
 use App\Worker;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,14 @@ class AssignWorkerController extends Controller
      */
     public function getIndex()
     {
-        $schemes = Scheme::all();
+        $scheme_id = Auth::user()->scheme_id;
+
+        if ( ! empty($scheme_id)) {
+            $schemes = Scheme::where('id',$scheme_id)->get();
+        }else{
+            $schemes = Scheme::all();
+        }
+        //$schemes = Scheme::all();
     	$title = "Farmers Connect: Workers Page";
         return view('worker.assign',compact('title','schemes'));
     }

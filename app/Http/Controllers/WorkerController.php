@@ -73,6 +73,9 @@ class WorkerController extends Controller
         $password_hash = Hash::make($password);
         $token = str_random(64);
         $request['token'] = $token;
+
+        //insert into user table
+        $user = $this->insertUser($request, $password_hash);
         //insert into workers table
         $worker = Worker::create($request->all());
 
@@ -80,8 +83,6 @@ class WorkerController extends Controller
           Session::flash('warning','Failed! Unable to create user');
           return Redirect::back();
         }
-        //insert into user table
-        $user = $this->insertUser($request, $password_hash);
         
         if ($user) {
             //send email
@@ -103,9 +104,13 @@ class WorkerController extends Controller
     {
         //
         $title = 'Farmers Connect: Worker Details';
-        $worker = Worker::where('id',$id)->first();
+        $worker = Worker::where('key',$id)->first();
         //dd($farmer);
-        return view('worker.show',compact('title','worker'));
+        if ($worker) {
+               return view('worker.show',compact('title','worker'));
+        }
+        Session::flash('warning','Error! 404 Error.');
+        return Redirect::back();
     }
 
     /**

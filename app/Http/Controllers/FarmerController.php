@@ -102,9 +102,13 @@ class FarmerController extends Controller
     {
         //
         $title = 'Farmers Connect: Farmer Details';
-        $farmer = Farmer::where('id',$id)->first();
+        $farmer = Farmer::where('key',$id)->first();
         //dd($farmer);
-        return view('farmer.show',compact('title','farmer'));
+        if ($farmer) {
+            return view('farmer.show',compact('title','farmer'));
+        }
+        Session::flash('warning','Error! 404 Error.');
+        return Redirect::back();
     }
 
     /**
@@ -143,8 +147,16 @@ class FarmerController extends Controller
     public function destroy($id)
     {
         //
-        echo "delete method";
-        die;
+         $farmer = Farmer::where('id',$id)->first();
+         if ($farmer) {
+             File::delete(public_path().'/uploads/farmers/'.$farmer->image);
+             $farmer->delete($id);
+
+             Session::flash('message','Successful! You have deleted a Farmer');
+             return Redirect::to('/datatables');
+         }
+         Session::flash('warning','Failed! Unable to delete Dealer');
+         return Redirect::back();
     }
 
     //uploading image

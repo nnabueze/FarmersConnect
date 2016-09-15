@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('front.index');
 });
-
+////////////////////////////////////////////////////////////////farmer
 //Route for listing farmers
 Route::controller('datatables', 'DatatablesController', [
     'anyData'  => 'datatables.data',
@@ -25,8 +25,16 @@ Route::controller('assign', 'AssignController', [
     'anyData'  => 'assign.data',
     'getIndex' => 'assign',
 ]);
+Route::controller('schemefarmers', 'SchemeFarmersController', [
+    'anyData'  => 'schemefarmers.data',
+    'getIndex' => 'schemefarmers',
+]);
+Route::controller('approvedfarmer', 'ApprovedFarmerController', [
+    'anyData'  => 'approvedfarmer.data',
+    'getIndex' => 'approvedfarmer',
+]);
 Route::post('assign','DashboardController@assign');
-
+//////////////////////////////////////////////////////////////////worker
 //Route worker datatable
 Route::controller('work', 'DataWorkerController', [
     'anyData'  => 'work.data',
@@ -40,8 +48,12 @@ Route::controller('approvedworker', 'ApprovedWorkerController', [
     'anyData'  => 'approvedworker.data',
     'getIndex' => 'approvedworker',
 ]);
+Route::controller('schemeworker', 'SchemeWorkerController', [
+    'anyData'  => 'schemeworker.data',
+    'getIndex' => 'schemeworker',
+]);
 Route::post('workerassign','DashboardController@assignWorker');
-
+////////////////////////////////////////////////////////////////////////dealer
 //Route for viewing dealer and assigning
 Route::controller('viewdealer', 'DataDealerController', [
     'anyData'  => 'viewdealer.data',
@@ -56,14 +68,15 @@ Route::controller('approveddealer', 'ApprovedDealerController', [
     'getIndex' => 'approveddealer',
 ]);
 //Dealer billing information
-//Route::get('billing/{any}','DashboardController@billing');
 Route::get('billing/{token}',['as'=>'billing','uses'=>'DashboardController@billing']);
 Route::post('assigndealer','DashboardController@assignDealer');
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////scheme
 //view scheme
 Route::controller('viewscheme', 'DataSchemeController', [
     'anyData'  => 'viewscheme.data',
     'getIndex' => 'viewscheme',
 ]);
+////////////////////////////////////////////////////////////////////////////////
 //Display dashboard
 Route::get('admin/dashboard','DashboardController@index');
 //Logout from the systems
@@ -79,8 +92,6 @@ Route::get('email/{token}/{id}/{email}',['as'=>'email','uses'=>'WorkerController
 Route::get('emaildealer/{token}/{id}/{email}',['as'=>'emaildealer','uses'=>'DealerController@emailConfirm']);
 //changing user status
 Route::post('status','UserController@status');
-
-
 ////////////////////////ACL///////////////////////////
 Route::resource('/admin','AdminController'); //Display Login page
 Route::resource('permission','PermissionController');

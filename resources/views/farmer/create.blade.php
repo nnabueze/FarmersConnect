@@ -219,7 +219,8 @@
 		    		<div class="body">
 		    			<p><em>Please adhere to the following instruction</em></p>
 		    			<ul style="list-style-type:square">
-		    			  <li><em>Make sure all farmers have a specific phone number and fullname</em></li>
+		    			  <li><em>Phone number and fullname are unique identification for farmers</em></li>
+		    			  <li><em>Add crop before adding farmer</em></li>
 		    			</ul>
 		    		</div>
 		    	</div><!-- End of second row -->

@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Auth;
 use App\Farmer;
-use App\Scheme;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 
-class AssignController extends Controller
+class ApprovedFarmerController extends Controller
 {
+    //
     //
     public function __construct()
     {
@@ -20,7 +19,7 @@ class AssignController extends Controller
         $this->middleware('auth');
 
     }
-    //
+
     /**
      * Displays datatables front end view
      *
@@ -28,15 +27,9 @@ class AssignController extends Controller
      */
     public function getIndex()
     {
-        $scheme_id = Auth::user()->scheme_id;
-
-        if ( ! empty($scheme_id)) {
-            $schemes = Scheme::where('id',$scheme_id)->get();
-        }else{
-            $schemes = Scheme::all();
-        }
+        //$schemes = Scheme::all();
     	$title = "Farmers Connect: Farmers Page";
-        return view('farmer.assign',compact('title','schemes'));
+        return view('farmer.approved',compact('title'));
     }
 
     /**
@@ -46,9 +39,11 @@ class AssignController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Farmer::query())->addColumn('action', function ($id) {
-            return '<input type="checkbox" name="box[]" value="'.$id->id.'" id="remember_me_'.$id->id.'">
-                                        <label for="remember_me_'.$id->id.'"></label>'; 
+    	$farmers = Farmer::with('schemes')->where('assign',1)->get();
+
+        return Datatables::of($farmers)->addColumn('action', function ($id) {
+            return '<a href="farmers/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
         })->make(true);
     }
 }

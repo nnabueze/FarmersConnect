@@ -15,7 +15,7 @@
 		        <div class="card">
 		            <div class="header">
 		                <h2>
-		                    ASSIGNED SCHEME WORKERS
+		                    MY SCHEME WORKERS
 		                </h2>
 		                <ul class="header-dropdown m-r--5">
 		                    <li class="dropdown">
@@ -57,7 +57,7 @@ $(function() {
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('approvedworker.data') !!}',
+        ajax: '{!! route('schemeworker.data') !!}',
         columns: [
             { data: 'first_name', name: 'first_name' },
             { data: 'email', name: 'email' },

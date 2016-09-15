@@ -37,8 +37,8 @@ class DataWorkerController extends Controller
     public function anyData()
     {
         return Datatables::of(Worker::query())->addColumn('action', function ($id) {
-            return '<a href="worker/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-            <button class="btn-delete btn btn-default" data-remote="/worker/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+            return '<a href="worker/' . $id->key . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/worker/' . $id->key . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
         })->make(true);
     }
 }

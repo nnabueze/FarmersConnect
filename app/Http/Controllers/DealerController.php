@@ -112,7 +112,11 @@ class DealerController extends Controller
         $title = 'Farmers Connect: Dealer Details';
         $dealer = Dealer::where('key',$id)->first();
         //dd($farmer);
-        return view('dealer.show',compact('title','dealer'));
+        if ($dealer) {
+              return view('dealer.show',compact('title','dealer'));
+        }
+        Session::flash('warning','Error! 404 Error.');
+        return Redirect::back();
     }
 
     /**

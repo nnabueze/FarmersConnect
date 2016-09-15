@@ -70,12 +70,24 @@
                                 <a href="/farmers">View Farmers</a>
                             </li>
                             @endlevel
+                            @role('worker|scheme')
+                            <li>
+                                <a href="/schemefarmers">Scheme Farmers</a>
+                            </li>
+                            @endrole
                             <li>
                                 <a href="/csv">Upload Farmers</a>
                             </li>
+                            @level(2)
                             <li>
                                 <a href="/assign">Assign Farmers</a>
                             </li>
+                            @endlevel
+                            @level(3)
+                            <li>
+                                <a href="/approvedfarmer">Assigned Farmer</a>
+                            </li>
+                            @endlevel
                             <li>
                                 <a href="/crops">Add Crops</a>
                             </li>
@@ -96,11 +108,18 @@
                             </li>
                             @endlevel
                             <li>
-                                <a href="/assignworker">Approved Worker</a>
+                                <a href="/assignworker">Assign Worker</a>
                             </li>
+                            @role('scheme')
+                            <li>
+                                <a href="/schemeworker">Scheme Workers</a>
+                            </li>
+                            @endrole
+                            @level(3)
                             <li>
                                 <a href="/approvedworker">Assigned Worker</a>
                             </li>
+                            @endlevel
                         </ul>
                     </li>
                     @endrole

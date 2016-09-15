@@ -12,6 +12,7 @@ use Redirect;
 use App\Scheme;
 use App\Worker;
 use App\User;
+use App\Farmer;
 use App\Dealer;
 use App\Http\Requests;
 
@@ -55,10 +56,9 @@ class DashboardController extends Controller
             return Redirect::back();
         }
         if ($scheme) {
-            # code...
-            //attach farmer
-            $scheme->farmers()->attach($request->input('box'));
-            $scheme->save();
+
+            //checking if farmer has been assign to scheme already, if not attach farmer.
+            $this->check_farmer_scheme($request, $scheme);
 
             Session::flash('message','Successful! You have assaigned farmers to scheme');
             return Redirect::back();
@@ -211,5 +211,30 @@ class DashboardController extends Controller
             $m->from('oparannabueze@gmail.com', 'Farmers Connect Billing Information');
             $m->to($register->company_email, $register->name_of_company)->subject('Farmers Connect Billing Information!');
         });
+    }
+
+    //check if farmer is already assigned to scheme
+    private function check_farmer_scheme($request, $scheme)
+    {
+        $scheme_array = array();
+        $schemeArray = $scheme->farmers->toArray();
+
+        foreach ($schemeArray  as $value) {
+
+            //$scheme_activity[] = $value['id'];
+            array_push($scheme_array, $value['id']);
+        }
+        foreach ($request->input('box') as $value) {
+
+            if ( ! in_array($value, $scheme_array)) {
+              $scheme->farmers()->attach($value);
+              $scheme->save();
+
+              //updating farmers assign colum
+              $farmer = Farmer::find($value);
+              $farmer->assign = 1;
+              $farmer->save();
+            }
+        }
     }
 }

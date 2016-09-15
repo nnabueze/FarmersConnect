@@ -20,7 +20,7 @@
 		        <div class="card">
 		            <div class="header">
 		                <h2>
-		                    ASSIGNING WORKERS
+		                    ASSIGNING APPROVED WORKERS
 		                </h2>
 		                <ul class="header-dropdown m-r--5">
 		                    <li class="dropdown">

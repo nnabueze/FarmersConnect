@@ -92,10 +92,56 @@
 		                    
 		                    @endif
 		                </table>
-		                <span><a class='btn btn-default'>BACK</a></span>
-		                <span class='pull-right'><a class='btn btn-default'>EDIT</a>|<a class='btn btn-default'>DELETE</a></span>
+		                <span><a href='{{URL::to('/farmers')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
+		                <span class='pull-right'>
+		                	<form class="delete" action='/farmers/{{$farmer->id}}' method='POST'>
+		                		<input type="hidden" name="_method" value="DELETE">
+		                		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                		<button type="submit" class="btn btn-default waves-effect">
+		                		    DELETE</span>
+		                		</button>
+		                	</form>
+		                </span>
 		            </div>
 		        </div>
+		    </div>
+
+
+		    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		    	<div class="card">
+		    		<div class="header">
+		    			<h2>
+		    				FARMER IMAGE <small>Farmer picture</small>
+		    			</h2>
+		    			<ul class="header-dropdown m-r--5">
+		    				<li>
+		    					<a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse">
+		    						<i class="material-icons">loop</i>
+		    					</a>
+		    				</li>
+		    				<li class="dropdown">
+		    					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		    						<i class="material-icons">more_vert</i>
+		    					</a>
+		    					<ul class="dropdown-menu pull-right">
+		    						<li><a href="javascript:void(0);">Action</a></li>
+		    						<li><a href="javascript:void(0);">Another action</a></li>
+		    						<li><a href="javascript:void(0);">Something else here</a></li>
+		    					</ul>
+		    				</li>
+		    			</ul>
+		    		</div>
+		    		<div class="body">
+		    			<table class="table">
+		    				<tbody>
+		    					<tr>
+		    						<td><b>Farmer Picture</b></td>
+		    						<td><img src="{{asset('uploads/farmers/'.$farmer->image)}}" class="img-responsive"></td>
+		    					</tr>
+		    				</tbody>
+		    			</table>
+		    		</div>
+		    	</div>
 		    </div>
 		</div>
 		<!-- #END# Exportable Table -->
