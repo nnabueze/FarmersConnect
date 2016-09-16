@@ -123,7 +123,28 @@
 		                    
 		                    @endif
 		                </table>
-		                <span><a href='{{URL::to('/work')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
+		                <span><a href='{{URL::to('/work')}}' class='btn btn-default'>BACK</a>|
+		                	@if($worker->status == 'active')
+		                	<form action='action' method='POST'>
+		                		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                		<input type="hidden" name="status" value="{{ $worker->status }}">
+		                		<input type="hidden" name="id" value="{{ $worker->id }}">
+		                		<button type="submit" class="btn btn-default waves-effect">
+		                		    SUSPEND</span>
+		                		</button>
+		                	</form>
+		                	@endif
+		                	@if($worker->status == 'suspend')
+		                	<form action='action' method='POST'>
+		                		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                		<input type="hidden" name="status" value="{{ $worker->status }}">
+		                		<input type="hidden" name="id" value="{{ $worker->id }}">
+		                		<button type="submit" class="btn btn-default waves-effect">
+		                		    ACTIVATE</span>
+		                		</button>
+		                	</form>
+		                	@endif
+		                </span>
 		                <span class='pull-right'>
 		                	<form class="delete" action='/worker/{{$worker->id}}' method='POST'>
 		                		<input type="hidden" name="_method" value="DELETE">

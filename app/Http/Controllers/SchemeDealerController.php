@@ -41,11 +41,11 @@ class SchemeDealerController extends Controller
     public function anyData()
     {
         $user = Auth::user()->scheme_id;
-        $worker = Scheme::find($user)->dealers;
+        $dealer = Scheme::find($user)->dealers;
 
-        return Datatables::of($worker)->addColumn('action', function ($id) {
-            return '<a href="worker/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-            <button class="btn-delete btn btn-default" data-remote="/worker/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+        return Datatables::of($dealer)->addColumn('action', function ($id) {
+            return '<a href="dealer/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn-delete btn btn-default" data-remote="/dealer/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
         })->make(true);
     }
 }

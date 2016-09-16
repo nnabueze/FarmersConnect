@@ -246,4 +246,21 @@ class DealerController extends Controller
 
         return $imgName;
     }
+
+    //suspending and activating worker
+    public function action(Request $request)
+    {
+        $dealer = Dealer::find($request->input('id'));
+        switch($request->input('status')){
+            case 'active':
+                $dealer->status = 'suspend';
+                $dealer->save();
+                break;
+            default:
+                $dealer->status = 'active';
+                $dealer->save();
+
+
+        }
+    }
 }

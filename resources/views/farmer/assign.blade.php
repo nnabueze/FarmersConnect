@@ -109,7 +109,7 @@
 </section>
 @stop
 
-@push('scripts')
+@push('script')
 <script>
 $(function() {
    var table = $('#users-table1').DataTable({

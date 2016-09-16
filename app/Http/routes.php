@@ -53,6 +53,7 @@ Route::controller('schemeworker', 'SchemeWorkerController', [
     'getIndex' => 'schemeworker',
 ]);
 Route::post('workerassign','DashboardController@assignWorker');
+Route::post('action','WorkerController@action');
 ////////////////////////////////////////////////////////////////////////dealer
 //Route for viewing dealer and assigning
 Route::controller('viewdealer', 'DataDealerController', [
@@ -71,6 +72,7 @@ Route::controller('schemedealer', 'SchemeDealerController', [
     'anyData'  => 'schemedealer.data',
     'getIndex' => 'schemedealer',
 ]);
+Route::post('action1','DealerController@action');
 //Dealer billing information
 Route::get('billing/{token}',['as'=>'billing','uses'=>'DashboardController@billing']);
 Route::post('assigndealer','DashboardController@assignDealer');

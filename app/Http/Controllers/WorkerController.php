@@ -235,4 +235,21 @@ class WorkerController extends Controller
         Session::flash('warning','Failed! Token Mismatch ');
         return Redirect::to('/admin');
     }
+
+    //suspending and activating worker
+    public function action(Request $request)
+    {
+        $worker = Worker::find($request->input('id'));
+        switch($request->input('status')){
+            case 'active':
+                $worker->status = 'suspend';
+                $worker->save();
+                break;
+            default:
+                $worker->status = 'active';
+                $worker->save();
+
+
+        }
+    }
 }

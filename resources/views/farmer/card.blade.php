@@ -31,13 +31,13 @@
 						</ul>
 					</div>
 					<div class="body">
-							<div class='row'>
-								<div class='col-xs-6 col-md-4'>
+							<div class='row' id="print">
+								<div class='col-xs-4 col-md-4'>
 									<a href="javascript:void(0);" class="thumbnail">
 									    <img src="{{asset('uploads/farmers/'.$farmer->image)}}" class="img-responsive">
 									</a>
 								</div>
-								<div class='col-xs-6 col-md-4'>
+								<div class='col-xs-4 col-md-4'>
 									<table class="table">
 									    
 									    <tbody>
@@ -46,20 +46,31 @@
 									            <td>{{$farmer->fullname}}</td>
 									        </tr>
 									        <tr>
-									            <td>Name:</td>
-									            <td>{{$farmer->fullname}}</td>
+									            <td>Gender:</td>
+									            <td>{{$farmer->gender}}</td>
 									        </tr>
+									        </tr>
+									        <tr>
+									            <td>State:</td>
+									            <td>{{$farmer->state}}</td>
+									        </tr>
+									        <tr>
+									            <td>Crop Type:</td>
+									            <td>{{$farmer->crop}}</td>
+									        </tr>
+
 
 									    </tbody>
 									</table>
 								</div>
-								<div class='col-xs-6 col-md-4'>
+								<div class='col-xs-4 col-md-4'>
 										<a href="javascript:void(0);" class="thumbnail">
-										    {!! QrCode::size(200)->generate($farmer->key); !!}
+										    {!! QrCode::size(100)->generate($farmer->key); !!}
 										</a>
 								</div>
 							</div>
-							<button type="button" class="btn btn-default waves-effect" onclick="myFunction()"><i class="material-icons">print</i>&nbsp;Print</button>
+							<button type="button" class="btn btn-default waves-effect" onClick="window.print()"><i class="material-icons">print</i>&nbsp;Print</button>
+
 					</div>
 				</div>
 			</div><!-- End of First Colum -->

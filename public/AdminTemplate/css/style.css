@@ -1,4 +1,18 @@
 ﻿/* Navbar ====================================== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print * {
+    visibility: visible;
+  }
+  #print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: xx-small;
+  }
+}
 @import url(materialize.css);
 .navbar {
   font-family: "Roboto", sans-serif;
