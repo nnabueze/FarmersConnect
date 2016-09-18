@@ -47,9 +47,19 @@
 		                        	<th>Email</th>
 		                        	<th>Phone</th>
 		                        	<th>Crop</th>
-		                        	
 		                        </tr>
 		                    </thead>
+		                    <tfoot>
+		                        <tr>
+		                        	<th><input type="checkbox" id="remember_me_3">
+                                        <label for="remember_me_3"></label>
+		                        	</th>
+		                        	<th>Full Name</th>
+		                        	<th>Email</th>
+		                        	<th>Phone</th>
+		                        	<th>Crop</th>
+		                        </tr>
+		                    </tfoot>
 		                </table>
 
 		            </div>
@@ -109,7 +119,7 @@
 </section>
 @stop
 
-@push('script')
+@push('scripts')
 <script>
 $(function() {
    var table = $('#users-table1').DataTable({
