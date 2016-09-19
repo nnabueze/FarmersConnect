@@ -160,9 +160,10 @@ class DashboardController extends Controller
     {
     	if (Auth::check()) {
     	    Auth::logout();
-    	    return redirect('/admin');
+    	    return redirect('/');
     	} else {
-    	    return redirect('/admin');
+            Auth::logout();
+    	    return redirect('/');
     	}
     }
 
