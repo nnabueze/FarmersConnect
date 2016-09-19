@@ -162,11 +162,8 @@ class DashboardController extends Controller
     	    Auth::logout();
     	    return redirect('/');
     	} else {
-<<<<<<< HEAD
-=======
             Auth::logout();
->>>>>>> test
-    	    return redirect('/');
+            return redirect('/');
     	}
     }
 
