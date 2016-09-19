@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
             <li class="scroll active"><a href="/#home">Home</a></li>
-            <li class="scroll"><a href="{{URL::to('/admin')}}">Login</a></li>
+            <li class="scroll"><a href="http://farmersconnectng.com/scheme/admin">Login</a></li>
             <li class="scroll"><a href="/#services">Service</a></li> 
             <li class="scroll"><a href="/#about-us">About Us</a></li>                     
             
