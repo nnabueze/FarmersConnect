@@ -111,8 +111,8 @@
 							@if($dealer->status == 'active')
 							<form action='action1' method='POST'>
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<input type="hidden" name="status" value="{{ $worker->status }}">
-								<input type="hidden" name="id" value="{{ $worker->id }}">
+								<input type="hidden" name="status" value="{{ $dealer->status }}">
+								<input type="hidden" name="id" value="{{ $dealer->id }}">
 								<button type="submit" class="btn btn-default waves-effect">
 								    SUSPEND</span>
 								</button>
@@ -121,8 +121,8 @@
 							@if($dealer == 'suspend')
 							<form action='action1' method='POST'>
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<input type="hidden" name="status" value="{{ $worker->status }}">
-								<input type="hidden" name="id" value="{{ $worker->id }}">
+								<input type="hidden" name="status" value="{{ $dealer->status }}">
+								<input type="hidden" name="id" value="{{ $dealer->id }}">
 								<button type="submit" class="btn btn-default waves-effect">
 								    ACTIVATE</span>
 								</button>
