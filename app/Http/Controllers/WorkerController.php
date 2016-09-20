@@ -195,7 +195,7 @@ class WorkerController extends Controller
     //send email to worker
     private function sendMail($register, $password, $token) {
         Mail::send('email.success', ['user' => $register, 'password'=>$password, 'token'=>$token], function ($m) use ($register) {
-            $m->from('info@farmersconnectng.com', 'Farmers Connect Registration');
+            $m->from('nnabueze.opara@ercasng.com', 'Farmers Connect Registration');
             $m->to($register->email, $register->first_name)->subject('Farmers Connect Registration Successful!');
         });
     }
