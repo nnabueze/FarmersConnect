@@ -89,7 +89,7 @@
                             </li>
                             @endlevel
                             <li>
-                                <a href="/crops">Add Crops</a>
+                                <a href="/crops">Add Crops/Livestock</a>
                             </li>
                         </ul>
                     </li>
