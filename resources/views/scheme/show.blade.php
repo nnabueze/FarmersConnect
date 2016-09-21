@@ -94,7 +94,7 @@
 						</table>
 						<span><a href='{{URL::to('/viewscheme')}}' class='btn btn-default'>BACK</a>|<a class='btn btn-default'>EDIT</a></span>
 						<span class='pull-right'>
-							<form class="delete" action='/scheme/{{$scheme->id}}' method='POST'>
+							<form class="delete" action='/schemes/{{$scheme->id}}' method='POST'>
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<button type="submit" class="btn btn-default waves-effect">

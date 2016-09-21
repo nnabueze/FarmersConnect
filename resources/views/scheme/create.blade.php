@@ -29,7 +29,7 @@
 		    	        </ul>
 		    	    </div>
 		    	    <div class="body">
-		    	    	<form action="/scheme"  method="post" enctype="multipart/form-data">
+		    	    	<form action="/schemes"  method="post" enctype="multipart/form-data">
 		    	        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		    	            <h3>Scheme Details</h3>
 		    	            <br />

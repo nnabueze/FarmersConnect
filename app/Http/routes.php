@@ -113,7 +113,7 @@ Route::resource('/worker','WorkerController');
 Route::resource('/dealer','DealerController');
 ////////////////////////////////////////////////////////////
 //scheme
-Route::resource('/scheme','SchemeController');
+Route::resource('/schemes','SchemeController');
 //////////////////////////////////////////////////////////
 //activity
 Route::resource('/activity','ActivityController');

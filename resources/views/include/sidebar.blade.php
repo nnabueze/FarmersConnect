@@ -161,7 +161,7 @@
                     </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/scheme/create">Create Scheme</a>
+                                <a href="/schemes/create">Create Scheme</a>
                             </li>
                             <li>
                                 <a href="/viewscheme">View Scheme</a>
