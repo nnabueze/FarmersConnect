@@ -34,7 +34,7 @@
 							<div class='row' id="print">
 								<div class='col-xs-4 col-md-4'>
 									<a href="javascript:void(0);" class="thumbnail">
-									    <img src="{{asset('uploads/farmers/'.$farmer->image)}}" class="img-responsive">
+									    <img src="http://farmersconnectng.com/public/uploads/farmers/{{$farmer->image}}" class="img-responsive">
 									</a>
 								</div>
 								<div class='col-xs-4 col-md-4'>
