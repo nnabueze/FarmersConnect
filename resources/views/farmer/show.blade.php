@@ -136,7 +136,7 @@
 		    				<tbody>
 		    					<tr>
 		    						<td><b>Farmer Picture</b></td>
-		    						<td><img src="{{asset('uploads/farmers/'.$farmer->image)}}" class="img-responsive"></td>
+		    						<td><img src="{{url('public/uploads/farmers/'.$farmer->image))}}" class="img-responsive"></td>
 		    					</tr>
 		    				</tbody>
 		    			</table>
