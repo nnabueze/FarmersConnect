@@ -40,12 +40,12 @@
 		    	                        
 		    	                    </div>
 		    	                </div>
-		    	                <div class="form-group form-float">
+<!-- 		    	                <div class="form-group form-float">
 		    	                    <div class="form-line">
 		    	                        <input type="email" class="form-control" name="email" >
 		    	                        <label class="form-label">Email*</label>
 		    	                    </div>
-		    	                </div>
+		    	                </div> -->
 		    	                <div class="form-group form-float">
 		    	                    <div class="form-line">
 		    	                        <input type="text" class="form-control" name="phone" >
@@ -150,7 +150,7 @@
 
 		    	            <h3>Account Information</h3>
 		    	            <fieldset>
-		    	            	<div class="form-group form-float">
+<!-- 		    	            	<div class="form-group form-float">
 		    	            	    <div class="form-line">
 		    	            	        <input type="text" class="form-control" name="no_of_pack" >
 		    	            	        <label class="form-label">No of Pack*</label>
@@ -162,7 +162,7 @@
 		    	            	       <option value='y'>YES</option>
 		    	            	       <option value='n'>NO</option>
 		    	            	   </select>
-		    	            	</div>
+		    	            	</div> -->
 		    	            	<div class="form-group form-float">
 		    	            	   <select name='bank' class="form-control show-tick" >
 		    	            	       <option value=''>Select Bank</option>

@@ -85,7 +85,7 @@
                             @endlevel
                             @level(3)
                             <li>
-                                <a href="/approvedfarmer">Assigned Farmer</a>
+                                <a href="/approvedfarmer">Scheme Farmer</a>
                             </li>
                             @endlevel
                             <li>
