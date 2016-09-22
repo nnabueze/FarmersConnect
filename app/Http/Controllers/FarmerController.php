@@ -164,7 +164,7 @@ class FarmerController extends Controller
     {
         $image = $request->file('file');
         $imgName = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = "../../../uploads/farmers";
+        $destinationPath = url('uploads/farmers');
         $img = Image::make($image->getRealPath())->resize(150, 200)->save($destinationPath.'/'.$imgName);
 
         return $imgName;
