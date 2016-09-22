@@ -9,7 +9,7 @@
         <p>Email: {{$user->email}}</p>
         <p>Password: {{$password}}</p>
         <p>Phone: {{$user->phone}}</p>
-        <p>Please<a href="{{ URL::to('/admin') }}"><strong>CLICK HERE</strong></a> to login</p>
+        <p>Please<a href="{{url('scheme/admin')}}"><strong>CLICK HERE</strong></a> to login</p>
         <p><i>N/B:&nbsp;You are advice to change your password..</i></p>
     </div>
 </div>

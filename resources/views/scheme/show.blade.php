@@ -134,11 +134,11 @@
 							<tbody>
 								<tr>
 									<td><b>Facilitator Picture</b></td>
-									<td><img src="{{asset('uploads/scheme/'.$scheme->image)}}" class="img-responsive"></td>
+									<td><img src="{{url('public/uploads/scheme/'.$scheme->image)}}" class="img-responsive"></td>
 								</tr>
 								<tr>
 									<td><b>Scheme Logo</b></td>
-									<td><img src="{{asset('uploads/logo/'.$scheme->logo)}}" class="img-responsive"></td>
+									<td><img src="{{url('public/uploads/scheme/'.$scheme->logo)}}" class="img-responsive"></td>
 								</tr>
 							</tbody>
 						</table>

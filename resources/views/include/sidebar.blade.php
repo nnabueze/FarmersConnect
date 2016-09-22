@@ -117,7 +117,7 @@
                             @endrole
                             @level(3)
                             <li>
-                                <a href="/approvedworker">Assigned Worker</a>
+                                <a href="/approvedworker">Scheme Workers</a>
                             </li>
                             @endlevel
                         </ul>

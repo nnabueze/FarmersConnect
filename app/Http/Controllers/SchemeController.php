@@ -155,7 +155,7 @@ class SchemeController extends Controller
         //
         $scheme = Scheme::where('id',$id)->first();
         if ($scheme) {
-            File::delete(public_path().'/uploads/logo/'.$scheme->logo,public_path().'/uploads/scheme/'.$scheme->image);
+            File::delete(url().'/public/uploads/logo/'.$scheme->logo,url().'public/uploads/scheme/'.$scheme->image);
             /*unlink(public_path().'/uploads/logo'.$scheme->logo);
             unlink(public_path().'/uploads/scheme'.$scheme->image);*/
             $scheme->delete($id);
