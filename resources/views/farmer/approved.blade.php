@@ -35,7 +35,7 @@
 		                    <thead>
 		                        <tr>
 		                        	<th>Full Name</th>
-		                        	<th>Email</th>
+		                        	<th>State</th>
 		                        	<th>Phone</th>
 		                        	<th>Crop</th>
 		                        	<th>Action</th>
@@ -60,7 +60,7 @@ $(function() {
         ajax: '{!! route('approvedfarmer.data') !!}',
         columns: [
             { data: 'fullname', name: 'fullname' },
-            { data: 'email', name: 'email' },
+            { data: 'state', name: 'state' },
             { data: 'phone', name: 'phone' },
             {data: 'crop', name: 'crop'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

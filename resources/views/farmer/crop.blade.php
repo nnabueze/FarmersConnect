@@ -17,7 +17,7 @@
 				<div class="card">
 					<div class="header">
 						<h2>
-							Crop Page
+							Crop/Livestock Page
 							<small>Manage crop type on the platform</small>
 						</h2>
 						<ul class="header-dropdown m-r--5">
@@ -80,7 +80,7 @@
 				<div class="card">
 					<div class="header">
 						<h2>
-							Add Crop <small>Enter Crop type Name</small>
+							Add Crop/Livestock <small>Enter Crop type Name</small>
 						</h2>
 						<ul class="header-dropdown m-r--5">
 							<li>
