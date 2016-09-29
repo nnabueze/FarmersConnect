@@ -170,11 +170,11 @@
 							<tbody>
 								<tr>
 									<td><b>Contact Person Picture</b></td>
-									<td><img src="{{asset('uploads/dealer/'.$dealer->image)}}" class="img-responsive"></td>
+									<td><img src="{{public_path('uploads/dealer/'.$dealer->image)}}" class="img-responsive"></td>
 								</tr>
 								<tr>
 									<td><b>Dealer Logo</b></td>
-									<td><img src="{{asset('uploads/logo/'.$dealer->logo)}}" class="img-responsive"></td>
+									<td><img src="{{public_path('uploads/logo/'.$dealer->logo)}}" class="img-responsive"></td>
 								</tr>
 							</tbody>
 						</table>
