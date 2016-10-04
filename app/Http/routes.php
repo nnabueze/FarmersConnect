@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('front.index');
 });
@@ -120,3 +121,10 @@ Route::resource('/activity','ActivityController');
 //Dealer billing email
 Route::resource('/billing','BillingController');
 
+/////////////////////API'S ////////////////////////
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1',function($api){
+    $api->get('hello','App\Http\Controllers\ApiController@index');
+});

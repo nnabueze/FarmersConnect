@@ -143,6 +143,8 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        /*Dingo API*/
+        Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
