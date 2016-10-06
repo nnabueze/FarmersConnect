@@ -12,6 +12,6 @@ class ApiController extends Controller
     //testing api
     public function index()
     {
-    	return 'Hello';
+    	return 'Hello, am doing bitrix';
     }
 }
