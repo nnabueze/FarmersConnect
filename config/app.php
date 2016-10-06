@@ -145,6 +145,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         /*Dingo API*/
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        /*Tymon.JWT*/
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -205,6 +207,8 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
 
