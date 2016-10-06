@@ -128,4 +128,5 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
     $api->get('hello','App\Http\Controllers\ApiController@index');
     $api->post('user','App\Http\Controllers\ApiController@user');
+    $api->post('authenticate','App\Http\Controllers\ApiController@authentication');
 });
