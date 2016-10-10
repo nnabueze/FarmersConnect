@@ -135,4 +135,6 @@ $api->version('v1',function($api){
 $api->version('v1',['middleware'=>'api.auth'],function($api){
     //farmers verification
     $api->get('farmer_verification', 'App\Http\Controllers\ApiController@farmer_verification');
+    //Login worker verification
+    $api->post('login_worker', 'App\Http\Controllers\ApiController@login_worker');
 });
