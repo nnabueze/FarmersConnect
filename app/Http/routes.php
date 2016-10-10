@@ -125,8 +125,14 @@ Route::resource('/billing','BillingController');
 
 $api = app('Dingo\Api\Routing\Router');
 
+//open APi route
 $api->version('v1',function($api){
-    $api->get('hello','App\Http\Controllers\ApiController@index');
-    $api->post('user','App\Http\Controllers\ApiController@user');
+    //creating user token
     $api->post('authenticate','App\Http\Controllers\ApiController@authentication');
+});
+
+//protected Api route
+$api->version('v1',['middleware'=>'api.auth'],function($api){
+    //farmers verification
+    $api->get('farmer_verification', 'App\Http\Controllers\ApiController@farmer_verification');
 });
