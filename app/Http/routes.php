@@ -142,7 +142,10 @@ $api->version('v1',['middleware'=>'api.auth'],function($api){
 
     //scheme verification
     $api->get('scheme_verification', 'App\Http\Controllers\ApiController@scheme_verification');
-    
+
     //dealer verification
     $api->get('dealer_verification', 'App\Http\Controllers\ApiController@dealer_verification');
+
+    //Report API
+    $api->post('report', 'App\Http\Controllers\ApiController@report');
 });

@@ -14,6 +14,7 @@ use App\Farmer;
 use App\Worker;
 use App\Scheme;
 use App\Dealer;
+use App\Report;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -127,6 +128,38 @@ class ApiController extends Controller
         }
 
         return $this->response->array(compact('dealer'))->setStatusCode(200);
+    }
+
+    //POST Rport API
+    public function report(Request $request)
+    {
+        //Token authentication
+        $this->token_auth();
+        $validator = Validator::make($request->all(),[
+            'key_farmer'=>'alpha_num|max:20|min:20|required',
+            'key_worker'=>'alpha_num|max:20|min:20|required',
+            'key_dealer'=>'alpha_num|max:20|min:20|required',
+            'key_scheme'=>'alpha_num|max:20|min:20|required',
+            'activity'=>'required',
+            'quantity'=>'numeric|required',
+            'amount'=>'numeric|required'
+            ]);
+        //checking if validation failed
+        if ($validator->fails()) {
+            return $this->response->errorBadRequest();
+        }
+         
+
+        //check if report key exist
+        if ($key = Report::where('key',$request['key'])->first()) {
+            return $this->response->error('report exist',400);
+        }
+
+        //inserting a report
+        if (Report::create($request->all())) {
+            return $this->response->created();
+        }
+        return $this->response->error('something went wrong',400);
     }
 
     //token Authentication
