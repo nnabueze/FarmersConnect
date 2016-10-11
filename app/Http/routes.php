@@ -133,10 +133,16 @@ $api->version('v1',function($api){
 
 //protected Api route
 $api->version('v1',['middleware'=>'api.auth'],function($api){
+
     //farmers verification
     $api->get('farmer_verification', 'App\Http\Controllers\ApiController@farmer_verification');
+
     //Login worker verification
     $api->post('login_worker', 'App\Http\Controllers\ApiController@login_worker');
+
     //scheme verification
     $api->get('scheme_verification', 'App\Http\Controllers\ApiController@scheme_verification');
+    
+    //dealer verification
+    $api->get('dealer_verification', 'App\Http\Controllers\ApiController@dealer_verification');
 });

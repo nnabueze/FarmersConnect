@@ -13,6 +13,7 @@ use App\User;
 use App\Farmer;
 use App\Worker;
 use App\Scheme;
+use App\Dealer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -101,12 +102,31 @@ class ApiController extends Controller
             return $this->response->errorBadRequest();
         }
         $identification = $request->only('id');
-        $scheme = Scheme::where('key',$identification)->with('dealers')->first();
+        $scheme = Scheme::where('key',$identification)->with('dealers','activities')->first();
         if (!$scheme) {
             return $this->response->errorNotFound();
         }
 
         return $this->response->array(compact('scheme'))->setStatusCode(200);
+    }
+
+    //GET Dealer Verification
+    public function dealer_verification(Request $request)
+    {
+        //Token authentication
+        $this->token_auth();
+        $validator = Validator::make($request->only('id'),['id'=>'alpha_num|max:20|min:20']);
+        //checking if validation failed
+        if ($validator->fails()) {
+            return $this->response->errorBadRequest();
+        }
+
+        $dealer = Dealer::where('key',$request->only('id'))->with('activities')->first();
+        if (!$dealer) {
+            return $this->response->errorNotFound();
+        }
+
+        return $this->response->array(compact('dealer'))->setStatusCode(200);
     }
 
     //token Authentication
