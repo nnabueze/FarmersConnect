@@ -12,6 +12,7 @@ use Dingo\Api\Routing\Helpers;
 use App\User;
 use App\Farmer;
 use App\Worker;
+use App\Scheme;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -87,6 +88,25 @@ class ApiController extends Controller
         }
 
         return $this->response->error('Unable to login',404);
+    }
+
+    //GET scheme Verification
+    public function scheme_verification(Request $request)
+    {
+        //Token authentication
+        $this->token_auth();
+        $validator = Validator::make($request->only('id'),['id'=>'alpha_num|max:20|min:20']);
+        //checking if validation failed
+        if ($validator->fails()) {
+            return $this->response->errorBadRequest();
+        }
+        $identification = $request->only('id');
+        $scheme = Scheme::where('key',$identification)->with('dealers')->first();
+        if (!$scheme) {
+            return $this->response->errorNotFound();
+        }
+
+        return $this->response->array(compact('scheme'))->setStatusCode(200);
     }
 
     //token Authentication
