@@ -112,7 +112,7 @@ class DashboardController extends Controller
       
         if (count($request->input('box')) < 1) {
 
-            Session::flash('warning','Failed! Select workers to assign');
+            Session::flash('warning','Failed! Select dealer to assign');
             return Redirect::back();
         }
 

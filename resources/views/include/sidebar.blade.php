@@ -85,6 +85,9 @@
                             @endlevel
                             @level(3)
                             <li>
+                                <a href="/group">Group</a>
+                            </li>
+                            <li>
                                 <a href="/approvedfarmer">Scheme Farmers</a>
                             </li>
                             @endlevel
@@ -138,6 +141,9 @@
                             @endlevel
                             <li>
                                 <a href="/assigndealer">Assign Dealer</a>
+                            </li>
+                            <li>
+                                <a href="/quotation">Quotations</a>
                             </li>
                             @level(3)
                             <li>

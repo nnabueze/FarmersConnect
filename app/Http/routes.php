@@ -106,6 +106,7 @@ Route::resource('role','RoleController');
 Route::resource('/users','UserController');
 /////////////////////////Faermers/////////////////////////
 Route::resource('/farmers','FarmerController');
+Route::resource('/group','GroupController');
 ////////////////////////////////////////////////////////////
 //worker Registration
 Route::resource('/worker','WorkerController');
