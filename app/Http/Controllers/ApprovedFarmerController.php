@@ -42,8 +42,8 @@ class ApprovedFarmerController extends Controller
     	$farmers = Farmer::with('schemes')->where('assign',1)->get();
 
         return Datatables::of($farmers)->addColumn('action', function ($id) {
-            return '<a href="farmers/' . $id->id . '" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-            <button class="btn-delete btn btn-default" data-remote="/farmers/' . $id->id . '"><span class="glyphicon glyphicon-remove"></span></button>'; 
+            return '<a href="farmers/' . $id->id . '" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
+            <button class="btn btn-warning btn-sm" data-remote="/farmers/' . $id->id . '">unassign</button>'; 
         })->make(true);
     }
 }

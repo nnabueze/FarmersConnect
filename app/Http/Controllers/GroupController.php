@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Group;
 use Validator;
 use Redirect;
+use App\Scheme;
 use Session;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests;
@@ -28,9 +29,10 @@ class GroupController extends Controller
     public function index()
     {
         //
-        $groups = Group::all();
+        $groups = Group::with('schemes','farmers')->get();
+        $schemes = Scheme::all();
         $title = "Farmers Connect: Group Farmers Page";
-        return view('group.index',compact('groups','title'));
+        return view('group.index',compact('groups','title','schemes'));
     }
 
     /**
@@ -51,11 +53,26 @@ class GroupController extends Controller
      */
     public function store(GroupRequest $request)
     {
+        //check if scheme is selected
+        if (empty($request->input('scheme'))) {
+            Session::flash('warning','Failed! Please select Scheme');
+            return Redirect::back();
+        }
+
+        //check if group exist in scheme
+        if ($groupName = Group::where('group_name',$request->input('group_name'))->first()) {
+           Session::flash('warning','Failed! group exist');
+            return Redirect::back();
+        }
         $request['key'] = str_random(20);
         if (!$group = Group::create($request->all())) {
+
             Session::flash('warning','Failed! Unable to create group');
             return Redirect::back();
         }
+        //attaching to group to scheme
+        $group->schemes()->attach($request->input('scheme'));
+        $group->save();
         Session::flash('message','Successful! Group Created');
         return Redirect::back();
     }
@@ -99,7 +116,7 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GroupRequest $request, $id)
     {
         //
         if (!$group = Group::where('key',$id)->first()) {

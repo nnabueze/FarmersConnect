@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Farmer;
 use App\Scheme;
+use App\Group;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
@@ -32,11 +33,13 @@ class AssignController extends Controller
 
         if ( ! empty($scheme_id)) {
             $schemes = Scheme::where('id',$scheme_id)->get();
+            //$groups = Scheme::where('id',$scheme_id)->with('groups')->get();
         }else{
-            $schemes = Scheme::all();
+            $schemes = Scheme::with('groups')->get();
+            $groups = Group::with('farmers','schemes')->get();
         }
     	$title = "Farmers Connect: Farmers Page";
-        return view('farmer.assign',compact('title','schemes'));
+        return view('farmer.assign',compact('title','schemes','groups'));
     }
 
     /**

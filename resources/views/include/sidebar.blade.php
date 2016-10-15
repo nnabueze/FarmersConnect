@@ -63,34 +63,49 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/farmers/create">Register Farmers</a>
-                            </li>
-                            @level(4)
-                            <li>
-                                <a href="/farmers">View Farmers</a>
-                            </li>
-                            @endlevel
-                            @role('worker|scheme')
-                            <li>
-                                <a href="/schemefarmers">Scheme Farmers</a>
-                            </li>
-                            @endrole
-                            <li>
-                                <a href="/csv">Upload Farmers</a>
-                            </li>
-                            @level(2)
-                            <li>
-                                <a href="/assign">Assign Farmers</a>
-                            </li>
-                            @endlevel
-                            @level(3)
-                            <li>
-                                <a href="/group">Group</a>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Create Farmer</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="/farmers/create">Register Farmers</a>
+                                    </li>
+                                    <li>
+                                        <a href="/csv">Upload Farmers</a>
+                                    </li>
+                                    @level(4)
+                                    <li>
+                                        <a href="/farmers">View Farmers</a>
+                                    </li>
+                                    @endlevel
+                                </ul>
                             </li>
                             <li>
-                                <a href="/approvedfarmer">Scheme Farmers</a>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Assign Farmers</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    @level(2)
+                                    <li>
+                                        <a href="/assign">Assign Farmers</a>
+                                    </li>
+                                    @endlevel
+                                    @role('worker|scheme')
+                                    <li>
+                                        <a href="/schemefarmers">Scheme Farmers</a>
+                                    </li>
+                                    @endrole
+
+                                    @level(3)
+                                    <li>
+                                        <a href="/group">Group</a>
+                                    </li>
+                                    <li>
+                                        <a href="/approvedfarmer">Scheme Farmers</a>
+                                    </li>
+                                    @endlevel
+                                </ul>
                             </li>
-                            @endlevel
                             <li>
                                 <a href="/crops">Add Crops/Livestock</a>
                             </li>

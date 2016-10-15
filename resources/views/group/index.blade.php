@@ -38,7 +38,9 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>NAME</th>
+									<th>GROUP NAME</th>
+									<th>SCHEME</th>
+									<th>NO OF FARMERS</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -50,6 +52,14 @@
 									<th scope="row">{{$i}}</th>
 									<td>
 										{{ucwords($group->group_name)}}
+									</td>
+									<td>
+										@foreach($group->schemes as $value)
+										{{ucwords($value['name_of_scheme'])}}
+										@endforeach
+									</td>
+									<td>
+										{{count($group->farmers)}}
 									</td>
 									<td style="width:18%">
 										
@@ -122,6 +132,20 @@
 							        <input type="text" class="form-control" name="group_name" required>
 							        <label class="form-label">Group Name</label>
 							    </div>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Select Scheme</label>
+								<select name='scheme' class="form-control show-tick" required>
+							
+									<option value=''>Select scheme</option>
+									@if($schemes)
+										@foreach($schemes as $scheme)
+								    <option value='{{$scheme->id}}'>{{$scheme->name_of_scheme}}</option>
+								    	@endforeach
+									@else
+								    <option value=''>No Scheme</option>
+									@endif
+								</select>
 							</div>
 							<br>
 							<button type="submit" class="btn btn-warning m-t-15 waves-effect">GROUP</button>

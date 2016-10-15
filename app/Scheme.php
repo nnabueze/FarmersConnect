@@ -34,7 +34,10 @@ class Scheme extends Model
     public function farmers(){
         return $this->belongsToMany('App\Farmer');
     }
-
+//Many to many reletionship with group
+    public function groups(){
+        return $this->belongsToMany('App\Group');
+    }
 //many to many relationship with worker
 /*    public function workers(){
         return $this->belongsToMany('App\Worker');

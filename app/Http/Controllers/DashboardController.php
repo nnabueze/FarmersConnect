@@ -9,6 +9,7 @@ use Hash;
 use Mail;
 use Session;
 use Redirect;
+use App\Group;
 use App\Scheme;
 use App\Worker;
 use App\User;
@@ -46,19 +47,29 @@ class DashboardController extends Controller
     //assigning farmer to scheme
     public function assign(Request $request)
     {
-/*        echo "<pre>";
-        print_r($request->all());
-        die;*/
+     
         //select scheme
         $scheme = Scheme::where('id',$request->input('scheme'))->first();
         if (count($request->input('box')) < 1) {
             Session::flash('warning','Failed! Select farmers to assign');
             return Redirect::back();
         }
+
+        //check if group is selected
+        if (!$request->input('group')) {
+            Session::flash('warning','Failed! select group');
+            return Redirect::back();
+        }
+
         if ($scheme) {
 
             //checking if farmer has been assign to scheme already, if not attach farmer.
-            $this->check_farmer_scheme($request, $scheme);
+            //also checking if group exist in scheme
+           $check = $this->check_farmer_scheme($request, $scheme);
+           if (!$check) {
+               Session::flash('warning','Failed! Group does not belong to scheme');
+               return Redirect::back();
+           }
 
             Session::flash('message','Successful! You have assaigned farmers to scheme');
             return Redirect::back();
@@ -217,30 +228,57 @@ class DashboardController extends Controller
         });
     }
 
+
     //check if farmer is already assigned to scheme
     private function check_farmer_scheme($request, $scheme)
     {
+        //get all the group in scheme
+        $schemeGroup = $scheme->groups->toArray();
+        $scheme_group = array();
+
+        //geting all farmers in the scheme
+        $check ="";
         $scheme_array = array();
         $schemeArray = $scheme->farmers->toArray();
+        $check ="";
 
+        //geting only id's of farmers
         foreach ($schemeArray  as $value) {
 
-            //$scheme_activity[] = $value['id'];
             array_push($scheme_array, $value['id']);
         }
+
+        //getting only id's of group 
+        foreach($schemeGroup as $value){
+
+            array_push($scheme_group, $value['id']);
+        }
+
+        //check if incoming farmer already exist in scheme
         foreach ($request->input('box') as $value) {
 
-            if ( ! in_array($value, $scheme_array)) {
+            if ( ! in_array($value, $scheme_array) && in_array($request->input('group'), $scheme_group)) {
               $scheme->farmers()->attach($value);
               $scheme->save();
+
+              //attaching farmer to group
+              $group = Group::find($request->input('group'));
+              $group->farmers()->attach($value);
+              $group->save();
 
               //updating farmers assign colum
               $farmer = Farmer::find($value);
               $farmer->assign = 1;
               $farmer->save();
+
+               $check = true;
+
+            }else{
+                $check = false;
             }
         }
-    }
+        return $check;
+ }
 
     //check if dealer is already assigned to scheme
     private function check_dealer_scheme($request, $scheme)

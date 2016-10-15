@@ -72,7 +72,7 @@
 		    	<div class="card">
 		    		<div class="header">
 		    			<h2>
-		    				Select Scheme <small>You can mass assign Farmers to scheme</small>
+		    				Select Scheme <small>Group in sequence (Group, No of Farmers, Scheme)</small>
 		    			</h2>
 		    			<ul class="header-dropdown m-r--5">
 		    				<li>
@@ -102,6 +102,23 @@
 		    			    	    	@endforeach
 		    			    	    @else
 		    			    	    <option value=''>No Scheme</option>
+		    			    	    @endif
+		    			    	</select>
+		    			    </div>
+
+		    			    <div class="form-group">
+		    			    	<select name='group' class="form-control show-tick">
+		    			    		<option value=''>Select Group</option>
+		    			    		@if($groups)
+		    			    			@foreach($groups as $group)
+		    			    	    <option value='{{$group->id}}'>{{ucwords($group->group_name)}} &nbsp;| &nbsp; ({{count($group->farmers)}}) &nbsp; | &nbsp; 
+		    			    	    	@foreach($group->schemes as $value)
+		    			    	    	{{ucwords($value['name_of_scheme'])}}
+		    			    	    	@endforeach
+		    			    	    </option>
+		    			    	    	@endforeach
+		    			    	    @else
+		    			    	    <option value=''>No Group</option>
 		    			    	    @endif
 		    			    	</select>
 		    			    </div>
