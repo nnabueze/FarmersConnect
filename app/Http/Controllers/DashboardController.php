@@ -32,7 +32,11 @@ class DashboardController extends Controller
     public function index()
     {
         $title = "Farmers Connect: Dashboard Page";
-    	return view('dashboard.index', compact('title'));
+        $dealers = Dealer::all();
+        $farmers = Farmer::all();
+        $workers = Worker::all();
+        $schemes =Scheme::all();
+    	return view('dashboard.index', compact('title','dealers','farmers','workers','schemes'));
     }
 
     //create an admin test user
@@ -269,6 +273,10 @@ class DashboardController extends Controller
               //updating farmers assign colum
               $farmer = Farmer::find($value);
               $farmer->assign = 1;
+              $farmer->save();
+
+              //updating farmers group colum
+              $farmer->group = 1;
               $farmer->save();
 
                $check = true;

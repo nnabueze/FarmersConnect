@@ -16,7 +16,7 @@
                     </div>
                     <div class="content">
                         <div class="text">REGISTERED FARMERS</div>
-                        <div class="number count-to" data-from="0" data-to="2125" data-speed="3000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{count($farmers)}}" data-speed="3000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="content">
                         <div class="text">EXTENSION WORKER</div>
-                        <div class="number count-to" data-from="0" data-to="1257" data-speed="3000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{count($workers)}}" data-speed="3000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="content">
                         <div class="text">AGRO DEALERS</div>
-                        <div class="number count-to" data-from="0" data-to="1243" data-speed="3000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{count($dealers)}}" data-speed="3000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="content">
                         <div class="text">NO OF SCHEME</div>
-                        <div class="number count-to" data-from="0" data-to="1225" data-speed="3000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{count($schemes)}}" data-speed="3000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
